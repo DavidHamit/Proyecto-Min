@@ -67,4 +67,8 @@ public class UsuarioDAO {
 		}
 		return us;
 	}
+	
+	public UsuarioDTO actualizar(UsuarioDTO ud) {
+		return us;
+	}
 }
