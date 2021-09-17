@@ -107,13 +107,27 @@ public class ServletGestion extends HttpServlet {
 				response.sendRedirect("tabla.jsp?cedula="+cedu+"&&nombre="+nom+
 						"&&correo="+email+"&&usu="+usu+"pass="+pass);
 			}
-			/*cedu=cons.getCedula();
-			nom=cons.getNombre();
-			email=cons.getCorreo();
-			usu=cons.getUsuario();
-			pass=cons.getPassword();
-			response.sendRedirect("tabla.jsp?cedula="+cedu+"&&nombre="+nom+
-					"&&correo="+email+"&&usu="+usu+"&&pass="+pass);*/
+		}
+		
+		//BLOQUE DE ACTUALIZAR
+		if(request.getParameter("btnact")!=null) {
+			int x;
+			doc=Integer.parseInt(request.getParameter("cedula"));
+			nom=request.getParameter("nombre");
+			email=request.getParameter("correo");
+			usu=request.getParameter("usu");
+			pass=request.getParameter("pass");
+			udto=new UsuarioDTO(doc, nom, email, usu, pass);
+			us=new UsuarioDAO();
+			x=us.actualizar(udto);
+			if(x!=0) {
+				JOptionPane.showMessageDialog(null, "Usuario actualizado");
+				response.sendRedirect("usuarios.jsp");
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Error al actualizar");
+				response.sendRedirect("usuarios.jsp");
+			}
 		}
 	}
 

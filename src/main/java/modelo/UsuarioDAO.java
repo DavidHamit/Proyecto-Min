@@ -68,7 +68,20 @@ public class UsuarioDAO {
 		return us;
 	}
 	
-	public UsuarioDTO actualizar(UsuarioDTO ud) {
-		return us;
+	public int actualizar(UsuarioDTO ud) {
+		int x=0;
+		try {
+			ps=cnn.prepareStatement("UPDATE usuarios SET nomusu=?, correo_electronico=?, usuario=?, clave=? WHERE cedula=?");
+			ps.setString(1, ud.getNombre());
+			ps.setString(2, ud.getCorreo());
+			ps.setString(3, ud.getUsuario());
+			ps.setString(4, ud.getPassword());
+			ps.setInt(5, ud.getCedula());
+			x=ps.executeUpdate();
+		}
+		catch(SQLException ex) {
+			JOptionPane.showMessageDialog(null, "Error al actulizar dato: "+ex);
+		}
+		return x;
 	}
 }
