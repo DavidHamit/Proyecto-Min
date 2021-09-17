@@ -1,6 +1,8 @@
 package controlador;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -94,7 +96,7 @@ public class ServletGestion extends HttpServlet {
 			udto=new UsuarioDTO(doc);
 			us=new UsuarioDAO();
 			cons=us.consultapar(udto);
-			if(cons.getNombre().equals(null)) {
+			if(cons==null) {
 				JOptionPane.showMessageDialog(null, "Usuario inexistente");
 				response.sendRedirect("usuarios.jsp");
 			}
@@ -105,7 +107,7 @@ public class ServletGestion extends HttpServlet {
 				usu=cons.getUsuario();
 				pass=cons.getPassword();
 				response.sendRedirect("tabla.jsp?cedula="+cedu+"&&nombre="+nom+
-						"&&correo="+email+"&&usu="+usu+"pass="+pass);
+						"&&correo="+email+"&&usu="+usu+"&&pass="+pass);
 			}
 		}
 		
@@ -121,13 +123,35 @@ public class ServletGestion extends HttpServlet {
 			us=new UsuarioDAO();
 			x=us.actualizar(udto);
 			if(x!=0) {
-				JOptionPane.showMessageDialog(null, "Usuario actualizado");
+				JOptionPane.showMessageDialog(null, "Datos del Usuario Actualizados");
 				response.sendRedirect("usuarios.jsp");
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Error al actualizar");
+				JOptionPane.showMessageDialog(null, "Usuario inexistente");
 				response.sendRedirect("usuarios.jsp");
 			}
+		}
+		
+		//BLOQUE DE CONSULTA GENERAL
+		if(request.getParameter("btnconsg")!=null) {
+			ArrayList<UsuarioDTO> lista=new ArrayList<>();
+			us=new UsuarioDAO();
+			lista=us.consulta();
+			doc=0;
+			nom="";
+			email="";
+			usu="";
+			pass="";
+			for(int i=0; i<lista.size(); i++) {
+				cons=lista.get(i);
+				doc=cons.getCedula();
+				nom=cons.getNombre();
+				email=cons.getCorreo();
+				usu=cons.getUsuario();
+				pass=cons.getPassword();
+			}
+			response.sendRedirect("tabla.jsp?cedula="+doc+"&&nombre="+nom+"&&correo="+email+
+					"&&usu="+usu+"&&pass="+pass);
 		}
 	}
 

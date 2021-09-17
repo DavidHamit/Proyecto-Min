@@ -2,6 +2,7 @@ package modelo;
 
 import controlador.Conexion;
 import java.sql.*;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -71,7 +72,7 @@ public class UsuarioDAO {
 	public int actualizar(UsuarioDTO ud) {
 		int x=0;
 		try {
-			ps=cnn.prepareStatement("UPDATE usuarios SET nomusu=?, correo_electronico=?, usuario=?, clave=? WHERE cedula=?");
+			ps=cnn.prepareStatement("UPDATE usuarios SET nombre=?, correo_electronico=?, usuario=?, clave=? WHERE cedula=?");
 			ps.setString(1, ud.getNombre());
 			ps.setString(2, ud.getCorreo());
 			ps.setString(3, ud.getUsuario());
@@ -80,8 +81,24 @@ public class UsuarioDAO {
 			x=ps.executeUpdate();
 		}
 		catch(SQLException ex) {
-			JOptionPane.showMessageDialog(null, "Error al actulizar dato: "+ex);
+			JOptionPane.showMessageDialog(null, "Error al actualizar dato: "+ex);
 		}
 		return x;
+	}
+	
+	public ArrayList<UsuarioDTO> consulta() {
+		ArrayList <UsuarioDTO> lista=new ArrayList<>();
+		try {
+			ps=cnn.prepareStatement("SELECT * FROM usuarios");
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				us=new UsuarioDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+				lista.add(us);			
+			}
+		}
+		catch(SQLException ex) {
+			JOptionPane.showMessageDialog(null, "Error al consultar: "+ex);
+		}
+		return lista;
 	}
 }

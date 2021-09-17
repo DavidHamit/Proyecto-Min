@@ -51,6 +51,7 @@
 <input type="submit" name="btnins" value="Insertar">
 <input type="submit" name="btnact" value="Actualizar">
 <input class="btneli" type="submit" name="btneli" value="Eliminar">
+<input class="btnconsg" type="submit" name="btnconsg" value="Consulta General">
 </label>
 </form>
 </fieldset>
