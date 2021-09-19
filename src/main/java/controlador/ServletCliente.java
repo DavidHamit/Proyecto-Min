@@ -125,6 +125,8 @@ public class ServletCliente extends HttpServlet {
 						"&&direc="+dir+"&&tel="+tel+"&&email="+email);
 			}
 		}
+		
+		//BLOQUE DE CONSULTA GENERAL
 	}
 
 }
