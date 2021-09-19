@@ -1,6 +1,8 @@
 package controlador;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,27 +43,44 @@ public class ServletCliente extends HttpServlet {
 		ClienteDAO cd;
 		ClienteDTO cl;
 		ClienteDTO cons;
-		int cedula,tel;
-		String nom,dir,email;
+		int cedula=0,tel=0;
+		String nom="",dir="",email="";
 		
 		//BLOQUE DE INSERTAR
 		if(request.getParameter("btnins")!=null) {
 			int x;
+			/*if(request.getParameter("tel")==null || Integer.parseInt(request.getParameter("tel"))==0) {
+				tel=0;
+			}
+			if(request.getParameter("cedula")==null || request.getParameter("cedula")=="") {
+				cedula=0;
+			}*/
 			cedula=Integer.parseInt(request.getParameter("cedula"));
 			nom=request.getParameter("nombre");
 			dir=request.getParameter("direc");
 			tel=Integer.parseInt(request.getParameter("tel"));
 			email=request.getParameter("email");
-			cl=new ClienteDTO(cedula, nom, dir, tel, email);
-			cd=new ClienteDAO();
-			x=cd.insertar(cl);
-			if(x!=0) {
-				JOptionPane.showMessageDialog(null, "Cliente Creado");
+			if(nom.equals("") || dir.equals("") || tel==0 || email.equals("")) {
+				JOptionPane.showMessageDialog(null, "Datos del cliente faltantes");
 				response.sendRedirect("clientes.jsp");
 			}
+			else 
+				if(cedula==0) {
+					JOptionPane.showMessageDialog(null, "Se requiere la cedula del cliente");
+					response.sendRedirect("clientes.jsp");
+				}
 			else {
-				JOptionPane.showMessageDialog(null, "Error al crear");
-				response.sendRedirect("clientes.jsp");
+				cl=new ClienteDTO(cedula, nom, dir, tel, email);
+				cd=new ClienteDAO();
+				x=cd.insertar(cl);
+				if(x==1) {
+					JOptionPane.showMessageDialog(null, "Cliente Creado");
+					response.sendRedirect("clientes.jsp");
+				}
+				else if(x==3) {
+					JOptionPane.showMessageDialog(null, "El cliente ya existe");
+					response.sendRedirect("clientes.jsp");
+				}
 			}
 		}
 		
@@ -91,16 +110,22 @@ public class ServletCliente extends HttpServlet {
 			dir=request.getParameter("direc");
 			tel=Integer.parseInt(request.getParameter("tel"));
 			email=request.getParameter("email");
-			cl=new ClienteDTO(cedula, nom, dir, tel, email);
-			cd=new ClienteDAO();
-			x=cd.actualizar(cl);
-			if(x) {
-				JOptionPane.showMessageDialog(null, "Datos del Cliente Actualizados");
+			if(nom.equals("") || dir.equals("") || tel==0 || email.equals("")) {
+				JOptionPane.showMessageDialog(null, "Datos del cliente faltantes");
 				response.sendRedirect("clientes.jsp");
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Cliente inexistente");
-				response.sendRedirect("clientes.jsp");
+				cl=new ClienteDTO(cedula, nom, dir, tel, email);
+				cd=new ClienteDAO();
+				x=cd.actualizar(cl);
+				if(x) {
+					JOptionPane.showMessageDialog(null, "Datos del Cliente Actualizados");
+					response.sendRedirect("clientes.jsp");
+				}			
+				else {
+					JOptionPane.showMessageDialog(null, "Cliente inexistente");
+					response.sendRedirect("clientes.jsp");
+				}
 			}
 		}
 		
@@ -127,6 +152,21 @@ public class ServletCliente extends HttpServlet {
 		}
 		
 		//BLOQUE DE CONSULTA GENERAL
+		if(request.getParameter("btnconsg")!=null) {
+			ArrayList<ClienteDTO> lista=new ArrayList<>();
+			cd=new ClienteDAO();
+			lista=cd.consulta();
+			for(int i=0; i<lista.size(); i++) {
+				cons=lista.get(i);
+				cedula=cons.getCedula();
+				nom=cons.getNombre();
+				dir=cons.getDireccion();
+				tel=cons.getTel();
+				email=cons.getEmail();
+			}
+			response.sendRedirect("tablac.jsp?cedula="+cedula+"&&nombre="+nom+
+					"&&direc="+dir+"&&tel="+tel+"&&email="+email);
+		}
 	}
 
 }

@@ -1,8 +1,14 @@
 @charset "ISO-8859-1";
 .tabla{
-	margin-left: 280px;
+	margin-left: 230px;
 	margin-top: 50px;
+	border: 2px solid black;
+	color: white;
+	width: 50%;
 }
-.encabezado{
-	background-color: 0;
+th{
+	border: 2px solid black;
+}
+td{
+	border: 2px solid black;
 }

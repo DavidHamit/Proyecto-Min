@@ -28,7 +28,7 @@
 </header>
 <form action="ServletCliente" method="post">
 <label>Cedula
-<input type="number" name="cedula">
+<input type="number" name="cedula" value="<%=0%>">
 </label>
 <label>Nombre
 <input type="text" name="nombre">
@@ -37,7 +37,7 @@
 <input type="text" name="direc">
 </label>
 <label>Telefono
-<input type="number" name="tel">
+<input type="number" name="tel" value="<%=0%>">
 </label>
 <label>Correo
 <input type="text" name="email">

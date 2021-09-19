@@ -9,7 +9,7 @@
 <link rel="Stylesheet" href="css//table.css">
 </head>
 <body>
-<%!String c,n,e,u,p;%>
+<%!String c="",n="",e="",u="",p="";%>
 <%if(request.getParameter("cedula")!=null) {
 	c=request.getParameter("cedula");
 	n=request.getParameter("nombre");

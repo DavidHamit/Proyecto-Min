@@ -2,10 +2,12 @@ package modelo;
 
 import controlador.Conexion;
 import java.sql.*;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
 public class ClienteDAO {
+	
 	Conexion con=new Conexion();
 	ClienteDTO cd;
 	Connection cnn=con.conexionbd();
@@ -15,13 +17,23 @@ public class ClienteDAO {
 	public int insertar(ClienteDTO cl) {
 		int x=0;
 		try {
-			ps=cnn.prepareStatement("INSERT INTO clientes values(?,?,?,?,?)");
-			ps.setInt(1, cl.getCedula());
-			ps.setString(2, cl.getNombre());
-			ps.setString(3, cl.getDireccion());
-			ps.setInt(4, cl.getTel());
-			ps.setString(5, cl.getEmail());
-			x=ps.executeUpdate();
+			cd=consultarp(cl);
+			Integer doc=cl.getCedula();
+			if(cd==null) {
+				if(doc.equals(null)) {
+					x=2;
+				}
+				ps=cnn.prepareStatement("INSERT INTO clientes values(?,?,?,?,?)");
+				ps.setInt(1, cl.getCedula());
+				ps.setString(2, cl.getNombre());
+				ps.setString(3, cl.getDireccion());
+				ps.setInt(4, cl.getTel());
+				ps.setString(5, cl.getEmail());
+				x=ps.executeUpdate();
+			}
+			else {
+				x=3;
+			}
 		}
 		catch(SQLException ex) {
 			JOptionPane.showMessageDialog(null, "Error al insertar: "+ex);
@@ -50,6 +62,7 @@ public class ClienteDAO {
 	}
 	
 	public boolean actualizar(ClienteDTO cl) {
+		
 		boolean x=false;
 		int y;
 		try {
@@ -71,6 +84,7 @@ public class ClienteDAO {
 	}
 	
 	public ClienteDTO consultarp(ClienteDTO cl) {
+		
 		try {
 			ps=cnn.prepareStatement("SELECT * FROM clientes WHERE cedula=?");
 			ps.setInt(1, cl.getCedula());
@@ -83,5 +97,21 @@ public class ClienteDAO {
 			JOptionPane.showMessageDialog(null, "Error al consultar: "+ex);
 		}
 		return cd;
+	}
+	
+	public ArrayList<ClienteDTO> consulta(){
+		ArrayList<ClienteDTO> lista=new ArrayList<>();
+		try {
+			ps=cnn.prepareStatement("SELECT * FROM clientes");
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				cd=new ClienteDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5));
+				lista.add(cd);
+			}
+		}
+		catch(SQLException ex) {
+			JOptionPane.showMessageDialog(null, "Error en consulta: "+ex);
+		}
+		return lista;
 	}
 }

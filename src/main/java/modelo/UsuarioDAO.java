@@ -13,19 +13,22 @@ public class UsuarioDAO {
 	PreparedStatement ps;
 	ResultSet rs;
 	
-	public boolean insertar(UsuarioDTO us) {
+	public boolean insertar(UsuarioDTO ud) {
 		int x;
 		boolean y=false;
 		try {
-			ps=cnn.prepareStatement("INSERT INTO usuarios values(?,?,?,?,?)");
-			ps.setInt(1, us.getCedula());
-			ps.setString(2, us.getNombre());
-			ps.setString(3, us.getCorreo());
-			ps.setString(4, us.getUsuario());
-			ps.setString(5, us.getPassword());
-			x=ps.executeUpdate();
-			if(x>0) {
-				y=true;
+			us=consultapar(ud);
+			if(us==null) {
+				ps=cnn.prepareStatement("INSERT INTO usuarios values(?,?,?,?,?)");
+				ps.setInt(1, ud.getCedula());
+				ps.setString(2, ud.getNombre());
+				ps.setString(3, ud.getCorreo());
+				ps.setString(4, ud.getUsuario());
+				ps.setString(5, ud.getPassword());
+				x=ps.executeUpdate();
+				if(x>0) {
+					y=true;
+				}
 			}
 		}
 		catch(SQLException ex) {
@@ -43,9 +46,6 @@ public class UsuarioDAO {
 			x=ps.executeUpdate();
 			if(x!=0) {
 				y=true;
-			}
-			else {
-				JOptionPane.showMessageDialog(null, "Usuario inexistente");
 			}
 		}
 		catch(SQLException ex) {
