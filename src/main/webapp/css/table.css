@@ -1,1 +1,8 @@
 @charset "ISO-8859-1";
+.tabla{
+	margin-left: 280px;
+	margin-top: 50px;
+}
+.encabezado{
+	background-color: 0;
+}

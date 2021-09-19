@@ -5,19 +5,16 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Proyecto</title>
-<link rel="Stylesheet" href="css//StyleMenu.css">
-<link rel="Stylesheet" href="css//table.css">
+<link rel="Stylesheet" href="css/StyleMenu.css">
+<link rel="Stylesheet" href="css/table.css">
 </head>
 <body>
-<%!String c,n,e,u,p;%>
-<%if(request.getParameter("cedula")!=null) {
-	c=request.getParameter("cedula");
-	n=request.getParameter("nombre");
-	e=request.getParameter("correo");
-	u=request.getParameter("usu");
-	p=request.getParameter("pass");
-}
-%>
+<%! String cedula,tel,nom,dir,email;%>
+<%cedula=request.getParameter("cedula");
+nom=request.getParameter("nombre");
+dir=request.getParameter("direc");
+tel=request.getParameter("tel");
+email=request.getParameter("email");%>
 <header class="cont-header">
 <div class="logo-titulo">
 <h1 class="h1" id="h1">Tienda Generica</h1>
@@ -25,9 +22,10 @@
 </div>
 <nav class="nav">
 <ul>
+<li><a href="index.jsp">Index</a>
 <li><a href="menu.jsp">Menu</a></li>
 <li><a href="usuarios.jsp">Usuarios</a></li>
-<li><a href="">Clientes</a></li>
+<li><a href="clientes.jsp">Clientes</a>
 <li><a href="">Proveedores</a></li>
 <li><a href="">Productos</a></li>
 <li><a href="">Ventas</a></li>
@@ -40,18 +38,18 @@
 <tr class="cont_enc">
 <th>Cedula</th>
 <th>Nombre</th>
+<th>Direccion</th>
+<th>Telefono</th>
 <th>Correo</th>
-<th>Usuario</th>
-<th>Contraseña</th>
 </tr>
 </thead>
 <tbody class="body">
 <tr class="cont_body">
-<td><%=c%></td>
-<td><%=n%></td>
-<td><%=e%></td>
-<td><%=u%></td>
-<td><%=p%></td>
+<td><%=cedula%></td>
+<td><%=nom %></td>
+<td><%=dir%></td>
+<td><%=tel%></td>
+<td><%=email%></td>
 </tr>
 </tbody>
 </table>
