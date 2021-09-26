@@ -13,15 +13,10 @@
 Conexion con=new Conexion();
 con.conexionbd();
 %>
-<header class="cont-header">
-<div class="logo-titulo">
-<div class="logo"></div>
-</div>
-</header>
-<fieldset>
-<legend> Bienvenidos mmm </legend>
-<legend>a la Tienda Generica</legend>
-<form action="ServletLoging" method="get">
+<fieldset class="cont-form">
+<legend> Bienvenidos</legend>
+<legend class="l2">a la Tienda Generica</legend>
+<form action="ServletLogin" method="get">
 <label>Usuario
 <input type="text" name="usu">
 </label>

@@ -5,8 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Proyecto</title>
-<link rel="Stylesheet" href="css//StyleMenu.css">
-<link rel="Stylesheet" href="css//table.css">
+<link rel="Stylesheet" href="css/StyleMenu.css">
+<link rel="Stylesheet" href="css/table.css">
 </head>
 <body>
 <%!String c="",n="",e="",u="",p="";%>
@@ -27,9 +27,9 @@
 <ul>
 <li><a href="menu.jsp">Menu</a></li>
 <li><a href="usuarios.jsp">Usuarios</a></li>
-<li><a href="">Clientes</a></li>
-<li><a href="">Proveedores</a></li>
-<li><a href="">Productos</a></li>
+<li><a href="clientes.jsp">Clientes</a></li>
+<li><a href="proveedores.jsp">Proveedores</a></li>
+<li><a href="productos.jsp">Productos</a></li>
 <li><a href="">Ventas</a></li>
 <li><a href="">Reportes</a></li>
 </ul>

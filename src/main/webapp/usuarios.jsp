@@ -6,8 +6,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Proyecto</title>
-<link rel="stylesheet" href="css//StyleMenu.css">
-<link rel="stylesheet" href="css//usuario.css">
+<link rel="stylesheet" href="css/StyleMenu.css">
+<link rel="stylesheet" href="css/usuario.css">
 </head>
 <body>
 <%
@@ -22,8 +22,8 @@
 <li><a href="index.jsp">Login</a></li>
 <li><a href="menu.jsp">Menu</a></li>
 <li><a href="clientes.jsp">Clientes</a></li>
-<li><a href="">Proveedores</a></li>
-<li><a href="">Productos</a></li>
+<li><a href="proveedores.jsp">Proveedores</a></li>
+<li><a href="productos.jsp">Productos</a></li>
 <li><a href="">Ventas</a></li>
 <li><a href="">Reportes</a></li>
 </ul>

@@ -1,0 +1,32 @@
+@charset "ISO-8859-1";
+.cont-form{
+	margin-left: 280px;
+	margin-top: 30px;
+	height: 50%;
+	width: 30%;
+	border: 1px solid darkblue;
+	color: #091053;
+}
+label{
+	display: block;
+	border: 0;
+}
+input{
+	background-color: transparent;
+	margin-top: 10px;
+	border: 0;
+	border-bottom: 1px solid darkblue;
+	display: block;
+	width: 100%;
+}
+[type="submit"]{
+	background-color: rgb(221, 221, 221);
+	border: 1px solid darkblue;
+	justify-content: space-between;
+	display: inline;
+	width: 100px;
+	margin: auto;
+	margin-left: 80px;
+	margin-top: 20px;
+	color: #091053;
+}

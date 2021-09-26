@@ -1,24 +1,21 @@
 @charset "ISO-8859-1";
 body{
-	background-color: #A3A3A3;
+	background-color: #FFD8C3;
 	font-family: "Courier New", Coureir, monospace;
-}
-.cont-header{
-    /*background-image: url('../imagenes/painting-3995999_1920.jpg');*/
-    background-size: cover;
-    display: flex;
-    justify-content: space-between;
-    height: 200px;
 }
 legend{
 	margin-left: auto;
 	margin-right: auto;
 	font-size: 30px;
-	color: #ffffff;
+	color: #091053;
 	font-weight: bold;
 }
+
+.l2{
+	margin-bottom: 15px;
+}
 .cont-form{
-	background-color: #A3A3A3;
+	/*background-color: #091053;*/
 	width: 60%;
 	margin-left: auto;
 	margin-right: auto;
@@ -28,11 +25,11 @@ legend{
 input{
     display: block;
     background: transparent;
-    color: #ffffff;
+    color: #091053;
     margin-right: auto;
     margin-left: auto;
     border: 0;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid darkblue;
     margin-top: 30px;
     text-align: center;
 }
@@ -44,13 +41,14 @@ form{
     margin-right: auto;
 }
 label{
-	color: #ffffff;
+	color: #091053;
 	font-size: 20px;
 	font-weight: bold;
 }
 [type="submit"]{
-	color: white;
-	border: 1px solid white;
+	background-color: #A3A3A3;
+	color: #091053;
+	border: 1px solid darkblue;
 	width: 200px;
 	height: 33px;
 	margin-top: 30px;

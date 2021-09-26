@@ -2,13 +2,13 @@
 .tabla{
 	margin-left: 230px;
 	margin-top: 50px;
-	border: 2px solid black;
-	color: white;
+	border: 2px solid darkblue;
+	color: #091053;
 	width: 50%;
 }
 th{
-	border: 2px solid black;
+	border: 2px solid darkblue;
 }
 td{
-	border: 2px solid black;
+	border: 2px solid darkblue;
 }

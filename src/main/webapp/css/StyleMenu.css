@@ -1,35 +1,35 @@
 @charset "ISO-8859-1";
 body{
-	background-color: #A3A3A3;
+	background-color: #FFD8C3;
 	
 }
 .cont-header{
-    background-image: url('../imagenes/painting-3995999_1920.jpg');
-    background-color: rgb(146, 136, 133);
+    background-image: url('../imagenes/talk-6520941_1920.jpeg');
+    /*background-image: url('../imagenes/talk-6520941_1920.jpeg);*/
+    /*painting-3995999_1920.jpg*/
     background-size: cover;
     display: flex;
     justify-content: space-between;
     height: 100px;
 }
 .logo-titulo{
-    background-color: rgb(146, 136, 133);
     display: flex;
     align-items: center;
     width: 40%;
 }
 .h1{
-    background-color: 0;
-    color: #FFFFFF;
+    color: #ffffff;
     font-family: 'Courier New', Courier, monospace;
     font-size: 30px;
     font-weight: unset;
     margin-right: 10px;
     margin-left: 10px;
     padding: 10px;
+    width: 180px;
 }
 .logo{
     font-family: 'Courier New', Courier, monospace;
-    background-image: url('../imagenes/icon.png');
+    background-image: url('../imagenes/barber_shop_icon_192640.png');
     background-size: contain;
     width: 50px;
     height: 50px;

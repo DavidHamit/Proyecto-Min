@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Proyecto</title>
 <link rel="Stylesheet" href="css/StyleMenu.css">
-<link rel="Stylesheet" href="">
+<link rel="Stylesheet" href="css/clientes.css">
 </head>
 <body>
 <header class="cont-header">
@@ -19,13 +19,14 @@
 <li><a href="index.jsp">Login</a>
 <li><a href="menu.jsp">Menu</a>
 <li><a href="usuarios.jsp">Usuarios</a></li>
-<li><a href="">Proveedores</a></li>
-<li><a href="">Productos</a></li>
+<li><a href="proveedores.jsp">Proveedores</a></li>
+<li><a href="productos.jsp">Productos</a></li>
 <li><a href="">Ventas</a></li>
 <li><a href="">Reportes</a></li>
 </ul>
 </nav>
 </header>
+<fieldset class="cont-form">
 <form action="ServletCliente" method="post">
 <label>Cedula
 <input type="number" name="cedula" value="<%=0%>">
@@ -48,5 +49,6 @@
 <input type="submit" name="btncons" value="Consulta">
 <input type="submit" name="btnconsg" Value="Consulta General">
 </form> 
+</fieldset>
 </body>
 </html>
