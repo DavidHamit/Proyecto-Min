@@ -17,13 +17,13 @@ public class ProveedorDAO {
 		String c="";
 		try {
 			pr=consultar(pd);
-			if(ps==null) {
+			if(pr==null) {
 				ps=cnn.prepareStatement("INSERT INTO proveedores VALUES (?,?,?,?,?)");
-				ps.setInt(1, pr.getNit());
-				ps.setString(2, pr.getNom());
-				ps.setString(3, pr.getDir());
-				ps.setString(4, pr.getTel());
-				ps.setString(5, pr.getCiudad());
+				ps.setInt(1, pd.getNit());
+				ps.setString(2, pd.getNom());
+				ps.setString(3, pd.getDir());
+				ps.setString(4, pd.getTel());
+				ps.setString(5, pd.getCiudad());
 				p=ps.executeUpdate();
 				if(p>0) {
 					c="y";

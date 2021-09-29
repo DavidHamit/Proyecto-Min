@@ -101,4 +101,20 @@ public class UsuarioDAO {
 		}
 		return lista;
 	}
+	
+	public ArrayList<UsuarioDTO> consultardocumento() {
+		ArrayList<UsuarioDTO>list=new ArrayList<UsuarioDTO>();
+		try {
+			ps=cnn.prepareStatement("SELECT cedula FROM usuarios");
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				us=new UsuarioDTO(rs.getInt(1));
+				list.add(us);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

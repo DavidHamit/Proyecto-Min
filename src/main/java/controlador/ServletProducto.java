@@ -49,12 +49,12 @@ public class ServletProducto extends HttpServlet {
 		JOptionPane.showMessageDialog(null, request.getPart("exam"));
 		archivo=request.getPart("exam");
 		JOptionPane.showMessageDialog(null, archivo);
-		String url="C:\\Users\\Usuario\\eclipse-workspace\\Proyecto\\src\\main\\webapp\\Archivos\\";
+		String url="C:\\\\Users\\\\david\\\\git\\\\proyecto_mintic\\\\src\\\\main\\\\webapp\\\\documentos\\\\";
 		if(request.getParameter("btncarg")!=null) {
 			if(request.getPart("exam")!=null) {
 				try {
 					InputStream file=archivo.getInputStream();
-					File copia=new File(url+"archivo.csv");
+					File copia=new File(url+"Lineas.csv");
 					FileOutputStream write=new FileOutputStream(copia);
 					int num=file.read();
 					while(num!=-1) {

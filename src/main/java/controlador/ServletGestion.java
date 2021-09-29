@@ -1,6 +1,7 @@
 package controlador;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
+
+import com.google.gson.Gson;
 
 import modelo.UsuarioDAO;
 import modelo.UsuarioDTO;
@@ -46,6 +49,7 @@ public class ServletGestion extends HttpServlet {
 		String nom,email,usu,pass;
 		int doc;
 		//long doc;
+		PrintWriter pw=response.getWriter();
 		boolean y;
 		//BLOQUE DE INSERTAR
 		if(request.getParameter("btnins")!=null) {
@@ -158,6 +162,30 @@ public class ServletGestion extends HttpServlet {
 			}
 			response.sendRedirect("tabla.jsp?cedula="+doc+"&&nombre="+nom+"&&correo="+email+
 					"&&usu="+usu+"&&pass="+pass);
+		}
+		
+		JOptionPane.showMessageDialog(null, "servlet");
+		//Consulta general
+		String dato=request.getParameter("dat");
+		JOptionPane.showMessageDialog(null, dato);
+		if(dato.equals("consultar")) {
+			JOptionPane.showMessageDialog(null, "en el if");
+		ArrayList<UsuarioDTO>lista=new ArrayList<UsuarioDTO>();	
+		us=new UsuarioDAO();
+		lista=us.consulta();
+		JOptionPane.showMessageDialog(null, lista.size());
+		Gson gson=new Gson();
+		
+		pw.println(gson.toJson(lista));
+		}
+		
+		String docu=request.getParameter("x");
+		if(docu.equals("documento")) {
+		ArrayList<UsuarioDTO>list=new ArrayList<UsuarioDTO>();
+		us=new UsuarioDAO();
+		Gson gson=new Gson();
+		list=us.consultardocumento();
+		pw.println(gson.toJson(list));
 		}
 	}
 
