@@ -8,6 +8,8 @@
 <title>Proyecto</title>
 <link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/usuario.css">
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/consultar.js"></script>
 </head>
 <body>
 <%
@@ -55,6 +57,13 @@
 <input class="btnconsg" type="submit" name="btnconsg" value="Consulta General">
 </label>
 </form>
+<form action="ServletGestion" method="post">
+        <input class="con" type="button" name="btnconsg" value="Consulta General">
+    </form>
+<table id="tabla">
+    
+    
+</table>
 </fieldset>
 </body>
 </html>

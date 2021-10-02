@@ -5,8 +5,6 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="js/consultar.js"></script>
 <title>Proyecto</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -31,10 +29,5 @@ con.conexionbd();
 </form>
 </fieldset>
 
-<form action="ServletGestion" method="post">
-<input type="button" name="btncon"  class="con"  value="Consultar">
-</form>
-<table id="tabla">
-</table>
 </body>
 </html>

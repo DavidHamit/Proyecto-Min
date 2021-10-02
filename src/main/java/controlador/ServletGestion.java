@@ -143,7 +143,7 @@ public class ServletGestion extends HttpServlet {
 		}
 		
 		//BLOQUE DE CONSULTA GENERAL
-		if(request.getParameter("btnconsg")!=null) {
+	    /*if(request.getParameter("btnconsg")!=null) {
 			ArrayList<UsuarioDTO> lista=new ArrayList<>();
 			us=new UsuarioDAO();
 			lista=us.consulta();
@@ -162,9 +162,8 @@ public class ServletGestion extends HttpServlet {
 			}
 			response.sendRedirect("tabla.jsp?cedula="+doc+"&&nombre="+nom+"&&correo="+email+
 					"&&usu="+usu+"&&pass="+pass);
-		}
+		}*/
 		
-		JOptionPane.showMessageDialog(null, "servlet");
 		//Consulta general
 		String dato=request.getParameter("dat");
 		JOptionPane.showMessageDialog(null, dato);
@@ -172,21 +171,21 @@ public class ServletGestion extends HttpServlet {
 			JOptionPane.showMessageDialog(null, "en el if");
 		ArrayList<UsuarioDTO>lista=new ArrayList<UsuarioDTO>();	
 		us=new UsuarioDAO();
-		lista=us.consulta();
+		lista=us.consultar();
 		JOptionPane.showMessageDialog(null, lista.size());
 		Gson gson=new Gson();
-		
+			
 		pw.println(gson.toJson(lista));
 		}
 		
-		String docu=request.getParameter("x");
+		/*String docu=request.getParameter("x");
 		if(docu.equals("documento")) {
 		ArrayList<UsuarioDTO>list=new ArrayList<UsuarioDTO>();
 		us=new UsuarioDAO();
 		Gson gson=new Gson();
 		list=us.consultardocumento();
 		pw.println(gson.toJson(list));
-		}
+		}*/
 	}
 
 }

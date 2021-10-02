@@ -86,7 +86,7 @@ public class UsuarioDAO {
 		return x;
 	}
 	
-	public ArrayList<UsuarioDTO> consulta() {
+	public ArrayList<UsuarioDTO> consultar() {
 		ArrayList <UsuarioDTO> lista=new ArrayList<>();
 		try {
 			ps=cnn.prepareStatement("SELECT * FROM usuarios");
@@ -102,7 +102,7 @@ public class UsuarioDAO {
 		return lista;
 	}
 	
-	public ArrayList<UsuarioDTO> consultardocumento() {
+	/*public ArrayList<UsuarioDTO> consultardocumento() {
 		ArrayList<UsuarioDTO>list=new ArrayList<UsuarioDTO>();
 		try {
 			ps=cnn.prepareStatement("SELECT cedula FROM usuarios");
@@ -116,5 +116,5 @@ public class UsuarioDAO {
 			e.printStackTrace();
 		}
 		return list;
-	}
+	}*/
 }

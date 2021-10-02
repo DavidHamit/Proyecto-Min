@@ -2,6 +2,8 @@ $(document).ready(function(){
 	
 	alert("hola");
 	
+	
+	
 	function consultarusuarios(){
 		alert("en la funcion");
 		
@@ -13,7 +15,6 @@ $(document).ready(function(){
          
        },
       success: function( result ) {
-	    console.log("success");
         console.log(result);
         let datos=document.querySelector('#tabla');
         //console.log(datos);
@@ -29,9 +30,9 @@ $(document).ready(function(){
         for (let i of result){
         	datos.innerHTML+=`<tr> <td>${i.cedula}</td>
                                    <td>${i.nombre}</td> 
-                                   <td>${i.correo_electronico}</td> 
+                                   <td>${i.correo}</td> 
                                    <td>${i.usuario}</td> 
-                                   <td>${i.clave}</td> 
+                                   <td>${i.password}</td> 
 
             </tr>`;
         }
@@ -41,7 +42,7 @@ $(document).ready(function(){
 	}
 	
 	
-	function consultadocumento(){
+ /*function consultadocumento(){
 		
 		$.ajax({
 	  type:"post",
@@ -65,7 +66,7 @@ $(document).ready(function(){
 		
 	}
 	
-	consultadocumento();
+	consultadocumento();*/
 	
 	$('.con').on('click',function(){
 		consultarusuarios();
