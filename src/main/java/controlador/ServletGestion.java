@@ -36,6 +36,7 @@ public class ServletGestion extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+	
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -110,6 +111,8 @@ public class ServletGestion extends HttpServlet {
 				email=cons.getCorreo();
 				usu=cons.getUsuario();
 				pass=cons.getPassword();
+				
+				
 				response.sendRedirect("tabla.jsp?cedula="+cedu+"&&nombre="+nom+
 						"&&correo="+email+"&&usu="+usu+"&&pass="+pass);
 			}
