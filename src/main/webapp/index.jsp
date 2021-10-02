@@ -16,6 +16,7 @@ con.conexionbd();
 <fieldset class="cont-form">
 <legend> Bienvenidos</legend>
 <legend class="l2">a la Tienda Generica</legend>
+
 <form action="ServletLogin" method="get">
 <label>Usuario
 <input type="text" name="usu">

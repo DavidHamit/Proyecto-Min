@@ -6,23 +6,23 @@
 <meta charset="ISO-8859-1">
 <title>Proyecto</title>
 <link rel="Stylesheet" href="css/proveedor.css">
-<link rel="Stylesheet" href="css/StyleMenu.css">
+<link rel="Stylesheet" href="css/header.css">
 </head>
 <body>
 <header class="cont-header">
 <div class="logo-titulo">
 <h1 class="h1" id="h1">Tienda Generica</h1>
-<div class="logo" id="logo"></div>
+<div class="Logo" id="logo"></div>
 </div>
 <nav class="nav">
 <ul class="ul">
-<li><a href="index.jsp">Login</a></li>
-<li><a href="menu.jsp">Menu</a></li>
-<li><a href="usuarios.jsp">Usuarios</a></li>
-<li><a href="clientes.jsp">Clientes</a></li>
-<li><a href="productos.jsp">Productos</a></li>
-<li><a href="">Ventas</a></li>
-<li><a href="">Reportes</a></li>
+<li class="li"><a href="menu.jsp">Menu</a>
+<li class="li"><a href="usuarios.jsp">Usuarios</a></li>
+<li class="li"><a href="clientes.jsp">Clientes</a></li>
+<li class="li"><a href="productos.jsp">Productos</a></li>
+<li class="li"><a href="">Ventas</a></li>
+<li class="li"><a href="">Reportes</a></li>
+<li class="li"><a href="index.jsp">Salir</a></li>
 </ul>
 </nav>
 </header>
@@ -37,6 +37,7 @@ if(request.getParameter("ni")!=null){
 }
 %>
 <fieldset class="cont-form">
+<legend> Menú Proovedores </legend>
 <form action="ServletProveedor" method="post" >
 <label for="">NIT
 <input type="number" name="nit_pr" value="<%=d%>">
