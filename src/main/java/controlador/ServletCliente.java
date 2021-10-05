@@ -1,6 +1,7 @@
 package controlador;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
+
+import com.google.gson.Gson;
 
 import modelo.ClienteDAO;
 import modelo.ClienteDTO;
@@ -45,7 +48,7 @@ public class ServletCliente extends HttpServlet {
 		ClienteDTO cons;
 		int cedula=0,tel=0;
 		String nom="",dir="",email="";
-		
+		PrintWriter pw=response.getWriter();
 		//BLOQUE DE INSERTAR
 		if(request.getParameter("btnins")!=null) {
 			int x;
@@ -152,20 +155,18 @@ public class ServletCliente extends HttpServlet {
 		}
 		
 		//BLOQUE DE CONSULTA GENERAL
-		if(request.getParameter("btnconsg")!=null) {
-			ArrayList<ClienteDTO> lista=new ArrayList<>();
+		/*if(request.getParameter("btnconsg")!=null) {
+			
+		}*/
+		String dato=request.getParameter("dat");
+		if(dato.equals("cliente")) {
+			JOptionPane.showMessageDialog(null, "if cliente");
+			ArrayList<ClienteDTO> lista=new ArrayList<ClienteDTO>();
 			cd=new ClienteDAO();
 			lista=cd.consulta();
-			for(int i=0; i<lista.size(); i++) {
-				cons=lista.get(i);
-				cedula=cons.getCedula();
-				nom=cons.getNombre();
-				dir=cons.getDireccion();
-				tel=cons.getTel();
-				email=cons.getEmail();
-			}
-			response.sendRedirect("tablac.jsp?cedula="+cedula+"&&nombre="+nom+
-					"&&direc="+dir+"&&tel="+tel+"&&email="+email);
+			JOptionPane.showMessageDialog(null, lista.size());
+			Gson gson=new Gson();
+			pw.println(gson.toJson(lista));
 		}
 	}
 

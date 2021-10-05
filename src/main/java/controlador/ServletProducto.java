@@ -49,7 +49,8 @@ public class ServletProducto extends HttpServlet {
 		JOptionPane.showMessageDialog(null, request.getPart("exam"));
 		archivo=request.getPart("exam");
 		JOptionPane.showMessageDialog(null, archivo);
-		String url="C:\\\\Users\\\\david\\\\git\\\\proyecto_mintic\\\\src\\\\main\\\\webapp\\\\documentos\\\\";
+		//String url="C:\\\\Users\\\\Usuario\\\\git\\\\Proyecto-Min\\\\src\\\\main\\\\webapp\\\\documentos\\\\";
+		String url="C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/";
 		if(request.getParameter("btncarg")!=null) {
 			if(request.getPart("exam")!=null) {
 				try {
@@ -66,7 +67,7 @@ public class ServletProducto extends HttpServlet {
 					boolean x;
 					JOptionPane.showMessageDialog(null, "Se cargo archivo");
 					ProductoDAO prod=new ProductoDAO();
-					x=prod.cargarproduc(url);
+					x=prod.cargarproduc(url+"Lineas.csv");
 					if(x) {
 						JOptionPane.showMessageDialog(null, "Archivo cargado exitosamente");
 					}

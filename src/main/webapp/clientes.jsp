@@ -5,8 +5,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Proyecto</title>
-<link rel="Stylesheet" href="css/header.css">
-<link rel="Stylesheet" href="css/clientes.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/clientes.css">
+<link rel="stylesheet" href="css/table.css">
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/consultar.js"></script>
 </head>
 <body>
 <header class="cont-header">
@@ -49,9 +52,15 @@
 <input type="submit" name="btneli" value="Eliminar">
 <input type="submit" name="btnact" value="Actualizar">
 <input type="submit" name="btncons" value="Consulta">
-<input type="submit" name="btnconsg" Value="Consulta General">
 </label>
 </form> 
+<form action="ServletCliente" method="post">
+<input class="concli" type="button" name="btnconsg" value="Consulta General">
+</form>
+<table id="tablac">
+
+
+</table>
 </fieldset>
 </body>
 </html>

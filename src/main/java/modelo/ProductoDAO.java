@@ -14,7 +14,7 @@ public class ProductoDAO {
 	public boolean cargarproduc(String URL) {
 		boolean x=false;
 		try {
-			ps=cnn.prepareStatement("load data infile '"+URL+"' into table productos fields terminated by ';' lines terminated '\r\n';");
+			ps=cnn.prepareStatement("load data infile '"+URL+"' into table productos fields terminated by ';' lines terminated by '\r\n';");
 			x=ps.executeUpdate()>0;
 		}
 		catch(SQLException ex) {

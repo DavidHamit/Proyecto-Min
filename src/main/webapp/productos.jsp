@@ -30,7 +30,7 @@
 <legend> Menú Productos </legend>
 <form action="ServletProducto" method="post" enctype="multipart/form-data">
 <label>Nombre del producto
-<input type="file" name="exam" value=null>
+<input type="file" name="exam">
 </label>
 <input type="submit" name="btncarg" value="Cargar">
 </form>

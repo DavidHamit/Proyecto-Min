@@ -6,7 +6,7 @@ legend{
 	color: #504233;
 	font-weight: bold;
 	margin-top:20px;
-	
+	margin-bottom: 25px;
 }
 
 .cont-form{
@@ -32,7 +32,6 @@ input{
 form{
     background-color: #B3A190;
     width: 100%;
-    margin-top: 25px;
     padding: 10px;
     /*border: 2px solid #ffff;*/
 }
@@ -56,4 +55,14 @@ label{
 }
 .btn{
 	display: flex;
+}
+[type="button"]{
+	margin-top: 5px;
+	font-weight: bold;
+    border: 1px solid #E0DFDF;
+    color:#E0DFDF;
+    width: 150px;
+    height: 33px;
+    margin-top:0;
+    border-radius: 5px;
 }

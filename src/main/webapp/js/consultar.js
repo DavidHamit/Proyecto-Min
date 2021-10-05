@@ -17,7 +17,7 @@ $(document).ready(function(){
       success: function( result ) {
         console.log(result);
         let datos=document.querySelector('#tabla');
-        //console.log(datos);
+        console.log(datos);
         datos.innerHTML='';
         datos.innerHTML+= `<tr>
            <th>Documento</th>
@@ -41,7 +41,35 @@ $(document).ready(function(){
 
 	}
 	
-	
+	function consultacliente(){
+		alert("en cliente");
+		$.ajax({
+			type:"post",
+			url:"ServletCliente",
+			dataType:'json',
+			data:{dat:"cliente"},
+			success: function( result ){
+				alert("dentro");
+				console.log("dentro");
+				console.log(result);
+				let datos=document.querySelector('#tablac');
+				console.log(datos);
+				datos.innerHTML='';
+				datos.innerHTML+=`<tr><th>Cedula</th>
+				<th>Nombre</th>
+				<th>Direccion</th>
+				<th>Telefono</th>
+				<th>Correo</th></tr>`;
+				for(let i of result){
+					datos.innerHTML+=`<tr><td>${i.cedula}</td>
+					<td>${i.nombre}</td>
+					<td>${i.direccion}</td>
+					<td>${i.tel}</td>
+					<td>${i.email}</td></tr>`;
+				}
+			}
+		});
+	}
  /*function consultadocumento(){
 		
 		$.ajax({
@@ -72,6 +100,8 @@ $(document).ready(function(){
 		consultarusuarios();
 	});
 	
-	
+	$('.concli').on('click',function(){
+		consultacliente();
+	});
 	
 });

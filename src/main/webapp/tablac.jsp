@@ -5,8 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Proyecto</title>
-<link rel="Stylesheet" href="css/header.css">
-<link rel="Stylesheet" href="css/table.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/table.css">
 </head>
 <body>
 <%! String cedula,tel,nom,dir,email;%>

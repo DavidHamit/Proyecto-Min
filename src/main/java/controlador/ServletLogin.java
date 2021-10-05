@@ -42,24 +42,28 @@ public class ServletLogin extends HttpServlet {
 			password=request.getParameter("pass");
 			lg=new LoginDAO();
 			lista=lg.login();
-			for(int i=0; i<lista.size(); i++) {
-				ld=lista.get(i);
-				if(ld.getUsuario().equals(usuario) && ld.getPassword().equals(password)) {
-					x=1;
-					response.sendRedirect("menu.jsp");
+			if(lista!=null) {
+				for(int i=0; i<lista.size(); i++) {
+					ld=lista.get(i);
+					if(ld.getUsuario().equals(usuario) && ld.getPassword().equals(password)) {
+						x=1;
+						response.sendRedirect("menu.jsp");
+					}
+				}
+				if(x==0) {
+					JOptionPane.showMessageDialog(null, "Error en usuario y/o contraseña");
+					response.sendRedirect("index.jsp");
 				}
 			}
-			if(x==0) {
-				JOptionPane.showMessageDialog(null, "Error en usuario y/o contraseña");
-				response.sendRedirect("index.jsp");
-			}
-			/*if(usuario.equals("admininicial") && password.equals("admin123456")) {
-				response.sendRedirect("menu.jsp");
-			}
 			else {
-				JOptionPane.showMessageDialog(null, "Error en usuario y/o contraseña");
-				response.sendRedirect("index.jsp");
-			}*/
+				if(usuario.equals("admininicial") && password.equals("admin123456")) {
+					response.sendRedirect("menu.jsp");
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Error en usuario y/o contraseña");
+					response.sendRedirect("index.jsp");
+				}
+			}
 		}
 		else
 			if(request.getParameter("btncan")!=null){
