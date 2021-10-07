@@ -1,12 +1,17 @@
 package controlador;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
+
+import com.google.gson.Gson;
 
 import modelo.ProveedorDAO;
 import modelo.ProveedorDTO;
@@ -45,6 +50,7 @@ public class ServletProveedor extends HttpServlet {
 		ProveedorDTO pcons;
 		boolean z;
 		String y;
+		PrintWriter pw=response.getWriter();
 		//BOTON CREAR PROVEEDOR
 		if(request.getParameter("btncre")!=null) {
 			nit=Integer.parseInt(request.getParameter("nit_pr"));
@@ -132,6 +138,18 @@ public class ServletProveedor extends HttpServlet {
 					response.sendRedirect("proveedores.jsp");
 				}
 			}
+		}
+		
+		//BLOQUE CONSULTA GENERAL
+		String dato=request.getParameter("dat");
+		if(dato.equals("proovedor")) {
+			JOptionPane.showMessageDialog(null, "if proovedor");
+			ArrayList<ProveedorDTO> lista=new ArrayList<ProveedorDTO>();
+			pdao=new ProveedorDAO();
+			lista=pdao.consulta();
+			JOptionPane.showMessageDialog(null, lista.size());
+			Gson gson=new Gson();
+			pw.println(gson.toJson(lista));
 		}
 	}
 }

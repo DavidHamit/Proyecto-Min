@@ -2,6 +2,7 @@ package modelo;
 
 import controlador.Conexion;
 import java.sql.*;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -86,5 +87,21 @@ public class ProveedorDAO {
 			e.printStackTrace();
 		}
 		return z;
+	}
+	
+	public ArrayList<ProveedorDTO> consulta(){
+		ArrayList<ProveedorDTO> lista=new ArrayList<>();
+		try {
+			ps=cnn.prepareStatement("SELECT * FROM proveedores");
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				pr=new ProveedorDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+				lista.add(pr);
+			}
+		}
+		catch(SQLException ex) {
+			JOptionPane.showMessageDialog(null, "Error en consulta: "+ex);
+		}
+		return lista;
 	}
 }

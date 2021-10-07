@@ -95,6 +95,39 @@ $(document).ready(function(){
 	}
 	
 	consultadocumento();*/
+	function consultaproveedor(){
+		alert("en proovedor");
+		$.ajax({
+			type:"post",
+			url:"ServletProveedor",
+			dataType:'json',
+			data:{dat:"proovedor"},
+			success: function( result ){
+				alert("dentro");
+				console.log("dentro");
+				console.log(result);
+				let datos=document.querySelector('#tablapro');
+				console.log(datos);
+				datos.innerHTML='';
+				datos.innerHTML+=`<tr><th>NIT</th>
+				<th>Nombre</th>
+				<th>Direccion</th>
+				<th>Telefono</th>
+				<th>Ciudad</th></tr>`;
+				for(let i of result){
+					datos.innerHTML+=`<tr><td>${i.nit}</td>
+					<td>${i.nom}</td>
+					<td>${i.dir}</td>
+					<td>${i.tel}</td>
+					<td>${i.ciudad}</td></tr>`;
+				}
+			}
+		});
+	}
+	
+	$('.conpro').on('click',function(){
+		consultaproveedor();
+	});
 	
 	$('.con').on('click',function(){
 		consultarusuarios();

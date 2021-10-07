@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Proyecto</title>
 <link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/ventas.css">
 </head>
 <body>
 <header class="cont-header">
@@ -35,10 +36,10 @@
 <tbody>
 <tr>
 <th>Codigo del producto</th>
-<th>Consultar producto</th>
-<th>Nombre del producto</th>
-<th>Cantidad del producto</th>
-<th>Precio del producto</th> 
+<th> Consultar producto</th>
+<th> Nombre del producto</th>
+<th> Cantidad del producto</th>
+<th> Precio del producto</th> 
 </tr>
 <tr>
 <td><input type="text" name="codigo1" value="${prod1.getCodigo()}"></td>

@@ -5,9 +5,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Proyecto</title>
+
 <link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/clientes.css">
-<link rel="stylesheet" href="css/table.css">
+
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="js/consultar.js"></script>
 </head>
@@ -58,10 +59,12 @@
 <form action="ServletCliente" method="post">
 <input class="concli" type="button" name="btnconsg" value="Consulta General">
 </form>
-<table id="tablac">
+<table class="tablac"id="tablac">
 
 
 </table>
+<form class="acabado"action="">
+</form>
 </fieldset>
 </body>
 </html>

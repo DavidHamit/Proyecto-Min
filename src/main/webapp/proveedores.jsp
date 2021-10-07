@@ -7,6 +7,8 @@
 <title>Proyecto</title>
 <link rel="Stylesheet" href="css/proveedor.css">
 <link rel="Stylesheet" href="css/header.css">
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/consultar.js"></script>
 </head>
 <body>
 <header class="cont-header">
@@ -61,6 +63,15 @@ if(request.getParameter("ni")!=null){
 <input type="submit" name="btncon" value="Consultar">
 <input type="submit" name="btnact" value="Actualizar">
 </label>
+</form>
+<form action="ServletProovedor" method="post">
+<input class="conpro" type="button" name="btnpro" value="Consulta General">
+</form>
+<table class="tablapro" id="tablapro">
+
+
+</table>
+<form class="acabado" action="">
 </form>
 </fieldset>
 </body>

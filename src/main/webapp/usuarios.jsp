@@ -55,16 +55,17 @@
 <input type="submit" name="btnact" value="Actualizar">
 <input type="submit" name="btncons" value="Consultar">
 <input class="btneli" type="submit" name="btneli" value="Eliminar">
-<input class="btnconsg" type="submit" name="btnconsg" value="Consulta General">
 </label>
 </form>
-<form action="ServletGestion" method="post">
+<form class="form"action="ServletGestion" method="post">
         <input class="con" type="button" name="btnconsg" value="Consulta General">
     </form>
-<table id="tabla">
+<table class="tabla" id="tabla">
     
     
 </table>
+<form class="acabado"action="">
+</form>
 </fieldset>
 </body>
 </html>
