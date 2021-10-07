@@ -70,9 +70,11 @@ public class ServletProducto extends HttpServlet {
 					x=prod.cargarproduc(url+"Lineas.csv");
 					if(x) {
 						JOptionPane.showMessageDialog(null, "Archivo cargado exitosamente");
+						response.sendRedirect("productos.jsp");
 					}
 					else {
 						JOptionPane.showMessageDialog(null, "Error: datos leidos invalidos");
+						response.sendRedirect("productos.jsp");
 					}
 				}
 				catch(Exception ex) {

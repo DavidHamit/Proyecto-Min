@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<input class="loginusu" type="text" value="${usu.getUsuario()}">
 </body>
 </html>

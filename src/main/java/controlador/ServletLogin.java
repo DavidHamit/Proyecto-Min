@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
 import modelo.LoginDAO;
@@ -37,6 +38,7 @@ public class ServletLogin extends HttpServlet {
 		LoginDAO lg;
 		int x=0;
 		ArrayList<LoginDTO> lista=new ArrayList<>();
+		HttpSession sesion=request.getSession();
 		if(request.getParameter("btnacep")!=null) {
 			usuario=request.getParameter("usu");
 			password=request.getParameter("pass");
@@ -47,6 +49,7 @@ public class ServletLogin extends HttpServlet {
 					ld=lista.get(i);
 					if(ld.getUsuario().equals(usuario) && ld.getPassword().equals(password)) {
 						x=1;
+						sesion.setAttribute("usu", ld);
 						response.sendRedirect("menu.jsp");
 					}
 				}

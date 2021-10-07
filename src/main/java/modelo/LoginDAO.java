@@ -17,10 +17,10 @@ public class LoginDAO {
 	public ArrayList<LoginDTO> login() {
 		ArrayList<LoginDTO> lista=new ArrayList<>();
 		try {
-			ps=cnn.prepareStatement("SELECT usuario,clave FROM usuarios");
+			ps=cnn.prepareStatement("SELECT usuario,clave,cedula FROM usuarios");
 			rs=ps.executeQuery();
 			while(rs.next()) {
-				ld=new LoginDTO(rs.getString(1), rs.getString(2));
+				ld=new LoginDTO(rs.getString(1), rs.getString(2), rs.getInt(3));
 				lista.add(ld);
 			}
 		}

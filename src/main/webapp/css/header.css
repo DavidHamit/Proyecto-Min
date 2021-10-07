@@ -26,7 +26,6 @@ body{
     align-items: center;
     width: 40%;
     color:  #091053;
-       
 }
 
 .Logo{
@@ -79,4 +78,15 @@ a{
     color: #091053;
     font-weight: bold;
     font-family: 'Courier New', Courier, monospace;
+}
+.loginusu{
+	color: #091053;
+	font-family: 'Courier New', Courier, monospace;
+	font-weight: bold;
+	position: fixed;
+	margin-left: 500px;
+	font-size: 30px;
+	margin-top: 10px;
+	border: 0;
+	background-color: transparent;
 }

@@ -23,6 +23,7 @@
 <h1 class="h1" id="h1">Tienda Generica</h1>
 <div class="logo" id="logo"></div>
 </div>
+<input class="loginusu" type="text" value="${usu.getUsuario()}">
 <nav class="nav">
 <ul>
 <li><a href="menu.jsp">Menu</a></li>

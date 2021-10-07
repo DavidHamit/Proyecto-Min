@@ -14,13 +14,14 @@
 <h1 class="h1" id="h1">Tienda Genérica</h1>
 <div class="Logo" id="logo"></div>
 </div>
+<input class="loginusu" type="text" value="${usu.getUsuario()}">
 <nav class="nav">
 <ul class="ul">
 <li class="li"><a href="usuarios.jsp">Usuarios</a></li>
 <li class="li"><a href="clientes.jsp">Clientes</a></li>
 <li class="li"><a href="proveedores.jsp">Proveedores</a></li>
 <li class="li"><a href="productos.jsp">Productos</a></li>
-<li class="li"><a href="">Ventas</a></li>
+<li class="li"><a href="ventas.jsp">Ventas</a></li>
 <li class="li"><a href="reportes.jsp">Reportes</a></li>
 <li class="li"><a href="index.jsp">Salir</a></li>
 </ul>
