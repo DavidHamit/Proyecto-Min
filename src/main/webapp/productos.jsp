@@ -11,6 +11,7 @@
 <script type="text/javascript" src="js/consultar.js"></script>
 </head>
 <body>
+<%! String nomprod="",cod="",nit="",vlr="",iva="",total="";%>
 <header class="cont-header">
 <div class="logo-titulo">
 <h1 class="h1" id="h1">Tienda Generica</h1>
@@ -46,7 +47,6 @@
 </form>
 </fieldset>
 <table class="tablap" id="tablap">
-<%! String nomprod="",cod="",nit="",vlr="",iva="",total="";%>
 <% if(request.getParameter("cod")!=null){
 		cod=request.getParameter("cod");
 		nomprod=request.getParameter("nomprod");
@@ -54,6 +54,7 @@
 		vlr=request.getParameter("vlr");
 		iva=request.getParameter("iva");
 		total=request.getParameter("total");%>
+<thead>
 <tr>
 <th>Codigo</th>
 <th>Nombre</th>
@@ -62,6 +63,8 @@
 <th>IVA</th>
 <th>Precio Venta</th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td><%=cod%></td>
 <td><%=nomprod%></td>
@@ -70,6 +73,7 @@
 <td><%=iva%></td>
 <td><%=total%></td>
 </tr>
+</tbody>
 <%} %>
 </table>
 </body>

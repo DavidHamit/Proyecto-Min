@@ -48,6 +48,7 @@ table{
 	margin-right: auto;
     margin-left: auto;
     border-radius: 5px;
+    width: 100%;
 }
 th{
 	border-right: 1px solid #E0DFDF;
@@ -66,7 +67,8 @@ label{
     justify-content: center;
     font-weight: 0;
     font-size: 18px;
-    /*text-align: center;*/
+    width: 80%;
+	display: flex;
 }
 [type="submit"]{
 	font-weight: bold;
@@ -79,4 +81,22 @@ label{
 }
 .btn{
 	display: flex;
+}
+.btnced{
+	display: block;
+	margin-top: 5px;
+	width: 10%; 
+}
+.cedcli{
+	height: 20px;
+	margin-right: 15px;
+}
+.nomprod{
+	width: 90%;
+}
+.precprod{
+	width: 90%;
+}
+.env{
+	margin-left: 225%;
 }

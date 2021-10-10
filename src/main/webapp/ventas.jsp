@@ -32,8 +32,8 @@
 <label>
 <input class="cedcli" type="number" name="cedula" placeholder="cedula" value="${cliente.getCedula()}">
 <input class="nomcli" type="text" name="nombre" placeholder="nombre" value="${cliente.getNombre()}">
-<input class="btnced" type="submit" name="cedcli" value="Confirmar">
 </label>
+<input class="btnced" type="submit" name="cedcli" value="Confirmar">
 <table>
 <tbody>
 <tr>
@@ -46,31 +46,30 @@
 <tr>
 <td><input type="text" name="codigo1" value="${prod1.getCodigo()}"></td>
 <td><input type="submit" name="cons1" value="Consultar"></td>
-<td><input type="text" name="nomprod1" value="${prod1.getNomprod()}"></td>
+<td><input type="text" name="nomprod1" value="${prod1.getNomprod()}" class="nomprod"></td>
 <td><input type="text" name="cant1"></td>
-<td><input type="number" name="precio1" value="${prod1.getPrecventa()}"></td>
+<td><input type="number" name="precio1" value="${prod1.getPrecventa()}" class="precprod"></td>
 </tr>
 <tr>
 <td><input type="text" name="codigo2" value="${prod2.getCodigo()}"></td>
 <td><input type="submit" name="cons2" value="Consultar"></td>
-<td><input type="text" name="nomprod2" value="${prod2.getNomprod()}"></td>
+<td><input type="text" name="nomprod2" value="${prod2.getNomprod()}" class="nomprod"></td>
 <td><input type="text" name="cant2"></td>
-<td><input type="number" name="precio2" value="${prod2.getPrecventa()}"></td>
+<td><input type="number" name="precio2" value="${prod2.getPrecventa()}" class="precprod"></td>
 </tr>
 <tr>
 <td><input type="text" name="codigo3" value="${prod3.getCodigo()}"></td>
 <td><input type="submit" name="cons3" value="Consultar"></td>
-<td><input type="text" name="nomprod3" value="${prod3.getNomprod()}"></td>
+<td><input type="text" name="nomprod3" value="${prod3.getNomprod()}" class="nomprod"></td>
 <td><input type="text" name="cant3"></td>
-<td><input type="number" name="precio3" value="${prod3.getPrecventa()}"></td>
+<td><input type="number" name="precio3" value="${prod3.getPrecventa()}" class="precprod"></td>
 </tr>
 <tr>
 <td><input type="submit" name="enviar" value="Enviar venta" class="env"></td>
 </tr>
 </tbody>
 </table>
-<!--<input type="hidden" name="cedusu" value="${usuario.getCedula()}"> -->
-<input type="text" name="cedusu" value="${usu.getCedula()}">
+<input type="hidden" name="cedusu" value="${usuario.getCedula()}">
 </form>
 </fieldset>
 </body>

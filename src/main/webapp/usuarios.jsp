@@ -12,8 +12,7 @@
 <script type="text/javascript" src="js/consultar.js"></script>
 </head>
 <body>
-<%
-%>
+<%!String c="",n="",e="",u="",p="";%>
 <header class="cont-header">
 <div class="logo-titulo">
 <h1 class="h1" id="h1">Tienda Generica</h1>
@@ -61,8 +60,32 @@
         <input class="con" type="button" name="btnconsg" value="Consulta General">
     </form>
 <table class="tabla" id="tabla">
-    
-    
+<%if(request.getParameter("cedula")!=null) {
+	c=request.getParameter("cedula");
+	n=request.getParameter("nombre");
+	e=request.getParameter("correo");
+	u=request.getParameter("usu");
+	p=request.getParameter("pass");
+%> 
+<thead class="encabezado">
+<tr class="cont_enc">
+<th>Cedula</th>
+<th>Nombre</th>
+<th>Correo</th>
+<th>Usuario</th>
+<th>Contraseña</th>
+</tr>
+</thead>
+<tbody class="body">
+<tr class="cont_body">
+<td><%=c%></td>
+<td><%=n%></td>
+<td><%=e%></td>
+<td><%=u%></td>
+<td><%=p%></td>
+</tr>
+</tbody>   
+<%} %>  
 </table>
 <form class="acabado"action="">
 </form>

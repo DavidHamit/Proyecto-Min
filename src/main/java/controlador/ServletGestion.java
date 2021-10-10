@@ -113,7 +113,7 @@ public class ServletGestion extends HttpServlet {
 				pass=cons.getPassword();
 				
 				
-				response.sendRedirect("tabla.jsp?cedula="+cedu+"&&nombre="+nom+
+				response.sendRedirect("usuarios.jsp?cedula="+cedu+"&&nombre="+nom+
 						"&&correo="+email+"&&usu="+usu+"&&pass="+pass);
 			}
 		}
@@ -171,16 +171,16 @@ public class ServletGestion extends HttpServlet {
 		String dato=request.getParameter("dat");
 		JOptionPane.showMessageDialog(null, dato);
 		if(dato!=null) {
-		if(dato.equals("consultar")) {
-			JOptionPane.showMessageDialog(null, "en el if");
-		ArrayList<UsuarioDTO>lista=new ArrayList<UsuarioDTO>();	
-		us=new UsuarioDAO();
-		lista=us.consultar();
-		JOptionPane.showMessageDialog(null, lista.size());
-		Gson gson=new Gson();
-			
-		pw.println(gson.toJson(lista));
-		}
+			if(dato.equals("consultar")) {
+				JOptionPane.showMessageDialog(null, "en el if");
+			ArrayList<UsuarioDTO>lista=new ArrayList<UsuarioDTO>();	
+			us=new UsuarioDAO();
+			lista=us.consultar();
+			JOptionPane.showMessageDialog(null, lista.size());
+			Gson gson=new Gson();
+				
+			pw.println(gson.toJson(lista));
+			}
 		}
 		
 		/*String docu=request.getParameter("x");
