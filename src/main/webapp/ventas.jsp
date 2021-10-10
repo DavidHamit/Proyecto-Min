@@ -29,9 +29,11 @@
 <fieldset>
 <legend>Menú Ventas</legend>
 <form action="ServletVentas" method="post">
-<input type="number" name="cedula" placeholder="cedula" value="${cliente.getCedula()}">
-<input type="text" name="nombre" placeholder="nombre" value="${cliente.getNombre()}">
-<input type="submit" name="cedcli" value="Confirmar">
+<label>
+<input class="cedcli" type="number" name="cedula" placeholder="cedula" value="${cliente.getCedula()}">
+<input class="nomcli" type="text" name="nombre" placeholder="nombre" value="${cliente.getNombre()}">
+<input class="btnced" type="submit" name="cedcli" value="Confirmar">
+</label>
 <table>
 <tbody>
 <tr>
@@ -43,7 +45,7 @@
 </tr>
 <tr>
 <td><input type="text" name="codigo1" value="${prod1.getCodigo()}"></td>
-<td><input type="submit" name="cons1" value="Buscar Producto"></td>
+<td><input type="submit" name="cons1" value="Consultar"></td>
 <td><input type="text" name="nomprod1" value="${prod1.getNomprod()}"></td>
 <td><input type="text" name="cant1"></td>
 <td><input type="number" name="precio1" value="${prod1.getPrecventa()}"></td>
@@ -63,7 +65,7 @@
 <td><input type="number" name="precio3" value="${prod3.getPrecventa()}"></td>
 </tr>
 <tr>
-<td><input type="submit" name="enviar" value="Enviar venta"></td>
+<td><input type="submit" name="enviar" value="Enviar venta" class="env"></td>
 </tr>
 </tbody>
 </table>

@@ -142,14 +142,16 @@ public class ServletProveedor extends HttpServlet {
 		
 		//BLOQUE CONSULTA GENERAL
 		String dato=request.getParameter("dat");
-		if(dato.equals("proovedor")) {
-			JOptionPane.showMessageDialog(null, "if proovedor");
-			ArrayList<ProveedorDTO> lista=new ArrayList<ProveedorDTO>();
-			pdao=new ProveedorDAO();
-			lista=pdao.consulta();
-			JOptionPane.showMessageDialog(null, lista.size());
-			Gson gson=new Gson();
-			pw.println(gson.toJson(lista));
+		if(dato!=null) {
+			if(dato.equals("proovedor")) {
+				JOptionPane.showMessageDialog(null, "if proovedor");
+				ArrayList<ProveedorDTO> lista=new ArrayList<ProveedorDTO>();
+				pdao=new ProveedorDAO();
+				lista=pdao.consulta();
+				JOptionPane.showMessageDialog(null, lista.size());
+				Gson gson=new Gson();
+				pw.println(gson.toJson(lista));
+			}
 		}
 	}
 }

@@ -12,9 +12,9 @@
 <header class="cont-header">
 <div class="logo-titulo">
 <h1 class="h1" id="h1">Tienda Genérica</h1>
+<!-- <input class="loginusu" type="text" value="${usu.getUsuario()}"> -->
 <div class="Logo" id="logo"></div>
 </div>
-<input class="loginusu" type="text" value="${usu.getUsuario()}">
 <nav class="nav">
 <ul class="ul">
 <li class="li"><a href="usuarios.jsp">Usuarios</a></li>

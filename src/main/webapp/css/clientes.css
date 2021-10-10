@@ -87,19 +87,32 @@ label{
 .tablac{
 	font-size: 20px;
 	border-radius: 5px;
-	border: 2px solid #B3A190;
-	margin-top:10px;
+	border: 2px solid #091053;
+	margin-top:30px;
 	margin-right: auto;
     margin-left: auto;
     height:100px;
     border-radius: 5px;
     margin-bottom:15px;
+    background-color: #B3A190;
+    width: 50%;
 }
 th{
-	border-right: 1px solid #B3A190;
-	border-bottom: 1px solid #B3A190;
+	border-right: 1px solid #091053;
+	border-bottom: 1px solid #091053;
 	border-radius: 5px;
+	width: 50%;
+	background-color: #B3A190;
 }
 tr{
-	border-right: 1px solid #E0DFDF;
+	width: 50%;
+	border-right: 1px solid #091053;
+	background-color: #B3A190;
+}
+td{
+	border-right: 1px solid #091053;
+	border-bottom: 1px solid #091053;
+	border-radius: 5px;
+	background-color: #B3A190;
+	width: 50%;
 }

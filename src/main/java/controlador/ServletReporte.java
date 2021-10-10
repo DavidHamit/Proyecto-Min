@@ -1,11 +1,20 @@
 package controlador;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
+
+import com.google.gson.Gson;
+
+import modelo.ClienteDAO;
+import modelo.ClienteDTO;
 
 /**
  * Servlet implementation class ServletReporte
@@ -34,8 +43,64 @@ public class ServletReporte extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		if(request.getParameter("cliente")!=null) {
+			JOptionPane.showMessageDialog(null, "if cliente");
+			response.sendRedirect("tablac.jsp?h2=Listado de Clientes");
+		}
+		else
+			if(request.getParameter("usuario")!=null) {
+				JOptionPane.showMessageDialog(null, "if usuario");
+				response.sendRedirect("tablac.jsp?h2=Listado de Usuarios");
+			}
+			else
+				if(request.getParameter("ventas")!=null) {
+					JOptionPane.showMessageDialog(null, "if ventas");
+					response.sendRedirect("tablac.jsp?h2=Listado de Ventas");
+				}
+		String opc;
+		opc=request.getParameter("dato");
+		if(opc!=null) {
+			Gson gson;
+			PrintWriter pw=response.getWriter();
+			opc=request.getParameter("dato");
+			if(opc.equals("cli")) {
+				ClienteDAO cl=new ClienteDAO();
+				ArrayList<ClienteDTO> lista=new ArrayList<ClienteDTO>();
+				lista=cl.consulta();
+				JOptionPane.showMessageDialog(null, lista.size());
+				gson=new Gson();
+				pw.println(gson.toJson(lista));
+			}
+		}
+		if(request.getParameter("back")!=null){
+			JOptionPane.showMessageDialog(null, "Back");
+			response.sendRedirect("reportes.jsp");
+		}
+		else
+			if(request.getParameter("cedula")!=null) {
+				int doc,tel;
+				String nom,dir,email;
+				JOptionPane.showMessageDialog(null, "Consulta");int cedula;
+				ClienteDTO cldto;
+				ClienteDAO cli=new ClienteDAO();
+				ClienteDTO dto;
+				cedula=Integer.parseInt(request.getParameter("cedula"));
+				cldto=new ClienteDTO(cedula);
+				dto=cli.consultarp(cldto);
+				if(dto==null) {
+					JOptionPane.showMessageDialog(null, "Cliente Inexistente");
+					response.sendRedirect("tablac.jsp");
+				}
+				else {
+					doc=dto.getCedula();
+					nom=dto.getNombre();
+					dir=dto.getDireccion();
+					tel=dto.getTel();
+					email=dto.getEmail();
+					response.sendRedirect("tablac.jsp?cedula="+doc+"&&nombre="+nom+
+							"&&direc="+dir+"&&tel="+tel+"&&email="+email);
+				}
+			}
 	}
 
 }

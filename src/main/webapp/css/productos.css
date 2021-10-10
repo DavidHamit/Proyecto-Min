@@ -61,3 +61,25 @@ input{
 .btn{
 	display: flex;
 }
+.codigo{
+	margin-top: 40px;
+	display: inline;
+}
+.cod{
+	display: inline;
+}
+.cons{
+	display: inline;
+	margin-left: 20px;
+	margin-top: 0;
+}
+.consg{
+	display: flex;
+	font-weight: bold;
+    border: 1px solid #E0DFDF;
+    color:#E0DFDF;
+    width: 150px;
+    height: 33px;
+    margin-top: 10px;
+    border-radius: 5px;
+}

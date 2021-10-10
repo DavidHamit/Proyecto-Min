@@ -149,24 +149,23 @@ public class ServletCliente extends HttpServlet {
 				dir=cons.getDireccion();
 				tel=cons.getTel();
 				email=cons.getEmail();
-				response.sendRedirect("tablac.jsp?cedula="+doc+"&&nombre="+nom+
-						"&&direc="+dir+"&&tel="+tel+"&&email="+email);
+				response.sendRedirect("clientes.jsp?cedula="+doc+"&&nombre="+nom+
+						"&&direc="+dir+"&&tel="+tel+"&&email="+email+"&&h2=Listado de Clientes");
 			}
 		}
 		
 		//BLOQUE DE CONSULTA GENERAL
-		/*if(request.getParameter("btnconsg")!=null) {
-			
-		}*/
 		String dato=request.getParameter("dat");
-		if(dato.equals("cliente")) {
-			JOptionPane.showMessageDialog(null, "if cliente");
-			ArrayList<ClienteDTO> lista=new ArrayList<ClienteDTO>();
-			cd=new ClienteDAO();
-			lista=cd.consulta();
-			JOptionPane.showMessageDialog(null, lista.size());
-			Gson gson=new Gson();
-			pw.println(gson.toJson(lista));
+		if(dato!=null) {
+			if(dato.equals("cliente")) {
+				JOptionPane.showMessageDialog(null, "if cliente");
+				ArrayList<ClienteDTO> lista=new ArrayList<ClienteDTO>();
+				cd=new ClienteDAO();
+				lista=cd.consulta();
+				JOptionPane.showMessageDialog(null, lista.size());
+				Gson gson=new Gson();
+				pw.println(gson.toJson(lista));
+			}
 		}
 	}
 

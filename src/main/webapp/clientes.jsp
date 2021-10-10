@@ -5,10 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Proyecto</title>
-
 <link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/clientes.css">
-
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="js/consultar.js"></script>
 </head>
@@ -25,8 +23,8 @@
 <li class="li"><a href="usuarios.jsp">Usuarios</a></li>
 <li class="li"><a href="proveedores.jsp">Proveedores</a></li>
 <li class="li"><a href="productos.jsp">Productos</a></li>
-<li class="li"><a href="">Ventas</a></li>
-<li class="li"><a href="">Reportes</a></li>
+<li class="li"><a href="ventas.jsp">Ventas</a></li>
+<li class="li"><a href="reportes.jsp">Reportes</a></li>
 <li class="li"><a href="index.jsp">Salir</a></li>
 </ul>
 </nav>
@@ -59,12 +57,29 @@
 <form action="ServletCliente" method="post">
 <input class="concli" type="button" name="btnconsg" value="Consulta General">
 </form>
-<table class="tablac"id="tablac">
-
-
-</table>
-<form class="acabado"action="">
-</form>
 </fieldset>
+<table class="tablac"id="tablac">
+<%! String cedula="",nom="",tel="",dir="",email=""; %>
+<%if(request.getParameter("cedula")!=null){
+	cedula=request.getParameter("cedula");
+	nom=request.getParameter("nombre");
+	dir=request.getParameter("direc");
+	tel=request.getParameter("tel");
+	email=request.getParameter("email");
+	%>
+<tr>
+<th>Cedula</th>
+<th>Nombre</th>
+<th>Direccion</th>
+<th>Telefono</th>
+<th>Correo</th>
+</tr>
+<tr><td><%=cedula%></td>
+<td><%=nom%></td>
+<td><%=dir%></td>
+<td><%=tel%></td>
+<td><%=email%></td></tr>
+<%} %>
+</table>
 </body>
 </html>

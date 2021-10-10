@@ -26,8 +26,8 @@
 <li class="li"><a href="clientes.jsp">Clientes</a></li>
 <li class="li"><a href="proveedores.jsp">Proveedores</a></li>
 <li class="li"><a href="productos.jsp">Productos</a></li>
-<li class="li"><a href="">Ventas</a></li>
-<li class="li"><a href="">Reportes</a></li>
+<li class="li"><a href="ventas.jsp">Ventas</a></li>
+<li class="li"><a href="reportes.jsp">Reportes</a></li>
 <li class="li"><a href="index.jsp">Salir</a></li>
 </ul>
 </nav>

@@ -1,7 +1,6 @@
 package controlador;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,8 +14,6 @@ import modelo.ClienteDAO;
 import modelo.ClienteDTO;
 import modelo.ProductoDAO;
 import modelo.ProductoDTO;
-import modelo.UsuarioDAO;
-import modelo.UsuarioDTO;
 import modelo.VentasDAO;
 import modelo.VentasDTO;
 
@@ -51,9 +48,6 @@ public class ServletVentas extends HttpServlet {
 		HttpSession sesion=request.getSession();
 		double prec1,prec2,prec3,vlr1,vlr2,vlr3,tsv,tiva,total;
 		double tiva1,tiva2,tiva3;
-		ArrayList<UsuarioDTO> cdusu=new ArrayList<>();
-		UsuarioDTO usd;
-		UsuarioDAO usu=new UsuarioDAO();
 		//CONSULTAR NOMBRE DEL CLIENTE
 		if(request.getParameter("cedcli")!=null) {
 			JOptionPane.showMessageDialog(null, "En if");
@@ -149,14 +143,17 @@ public class ServletVentas extends HttpServlet {
 				x=ven.registrar(vdto);
 				if(x>0) {
 					JOptionPane.showMessageDialog(null, "Venta Registrada");
+					
 					//DETALLE DE VENTAS
-					int cant,codigo;
+					int cant,codprod,codventa;
 					double iv,psv,pago;
-					boolean z;
+					boolean result;
 					VentasDTO vendto;
 					VentasDAO vent=new VentasDAO();
+					vendto=vent.consultacodigo();
 					
-				}
+					}
+				
 				else {
 					JOptionPane.showMessageDialog(null, "No se registro la venta");
 					response.sendRedirect("ventas.jsp");

@@ -25,6 +25,14 @@ public class VentasDTO {
 		this.total = total;
 	}
 
+	public VentasDTO(int codigo, double vlrventa, double iva, double total) {
+		super();
+		this.codigo = codigo;
+		this.vlrventa = vlrventa;
+		this.iva = iva;
+		this.total = total;
+	}
+
 	public VentasDTO(int codigo) {
 		this.codigo = codigo;
 	}

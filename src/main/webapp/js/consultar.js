@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	alert("hola");
+	//alert("hola");
 	
 	
 	
@@ -49,9 +49,6 @@ $(document).ready(function(){
 			dataType:'json',
 			data:{dat:"cliente"},
 			success: function( result ){
-				alert("dentro");
-				console.log("dentro");
-				console.log(result);
 				let datos=document.querySelector('#tablac');
 				console.log(datos);
 				datos.innerHTML='';
@@ -103,8 +100,6 @@ $(document).ready(function(){
 			dataType:'json',
 			data:{dat:"proovedor"},
 			success: function( result ){
-				alert("dentro");
-				console.log("dentro");
 				console.log(result);
 				let datos=document.querySelector('#tablapro');
 				console.log(datos);
@@ -125,6 +120,35 @@ $(document).ready(function(){
 		});
 	}
 	
+	function consultaproducto(){
+		alert("En producto");
+		$.ajax({
+			type:"get",
+			url:"ServletProducto",
+			dataType:'json',
+			data:{dat:"prod"},
+			success: function( result ){
+				let datos=document.querySelector('#tablap');
+				console.log(result);
+				datos.innerHTML='';
+				datos.innerHTML+=`<tr><th>Codigo</th>
+								<th>Nombre</th>
+								<th>NIT Proveedor</th>
+								<th>Precio Compra</th>
+								<th>IVA</th>
+								<th>Precio Venta</th></tr>`;
+				for(let i of result){
+					datos.innerHTML+=`<tr><td>${i.codigo}</td>
+									<td>${i.nomprod}</td>
+									<td>${i.nit}<td>
+									<td>${i.precventa}</td>
+									<td>${i.iva}</td>
+									<td>${i.precompra}</td></tr>`;
+				}
+			}
+		});
+	}
+	
 	$('.conpro').on('click',function(){
 		consultaproveedor();
 	});
@@ -137,4 +161,7 @@ $(document).ready(function(){
 		consultacliente();
 	});
 	
+	$('.conprod').on('click',function(){
+		consultaproducto();
+	});
 });

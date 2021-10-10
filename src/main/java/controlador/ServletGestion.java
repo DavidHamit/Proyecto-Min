@@ -170,6 +170,7 @@ public class ServletGestion extends HttpServlet {
 		//Consulta general
 		String dato=request.getParameter("dat");
 		JOptionPane.showMessageDialog(null, dato);
+		if(dato!=null) {
 		if(dato.equals("consultar")) {
 			JOptionPane.showMessageDialog(null, "en el if");
 		ArrayList<UsuarioDTO>lista=new ArrayList<UsuarioDTO>();	
@@ -179,6 +180,7 @@ public class ServletGestion extends HttpServlet {
 		Gson gson=new Gson();
 			
 		pw.println(gson.toJson(lista));
+		}
 		}
 		
 		/*String docu=request.getParameter("x");

@@ -7,6 +7,8 @@
 <title>Proyecto</title>
 <link rel="Stylesheet" href="css/header.css">
 <link rel="Stylesheet" href="css/productos.css">
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/consultar.js"></script>
 </head>
 <body>
 <header class="cont-header">
@@ -21,8 +23,8 @@
 <li class="li"><a href="usuarios.jsp">Usuarios</a></li>
 <li class="li"><a href="clientes.jsp">Clientes</a></li>
 <li class="li"><a href="proveedores.jsp">Proovedores</a></li>
-<li class="li"><a href="">Ventas</a></li>
-<li class="li"><a href="">Reportes</a></li>
+<li class="li"><a href="ventas.jsp">Ventas</a></li>
+<li class="li"><a href="reportes.jsp">Reportes</a></li>
 <li class="li"><a href="index.jsp">Salir</a></li>
 </ul>
 </nav>
@@ -35,6 +37,40 @@
 </label>
 <input type="submit" name="btncarg" value="Cargar">
 </form>
+<form action="ServletProducto" method="get">
+<label class="codigo">Codigo del Producto
+<input class="cod" type="number" name="codigo">
+</label>
+<input class="cons" type="submit" name="cons" value="Consultar">
+<input class="conprod" type="button" name="consg" value="Consulta General">
+</form>
 </fieldset>
+<table class="tablap" id="tablap">
+<%! String nomprod="",cod="",nit="",vlr="",iva="",total="";%>
+<% if(request.getParameter("cod")!=null){
+		cod=request.getParameter("cod");
+		nomprod=request.getParameter("nomprod");
+		nit=request.getParameter("nit");
+		vlr=request.getParameter("vlr");
+		iva=request.getParameter("iva");
+		total=request.getParameter("total");%>
+<tr>
+<th>Codigo</th>
+<th>Nombre</th>
+<th>NIT Proveedor</th>
+<th>Precio Compra</th>
+<th>IVA</th>
+<th>Precio Venta</th>
+</tr>
+<tr>
+<td><%=cod%></td>
+<td><%=nomprod%></td>
+<td><%=nit%><td>
+<td><%=vlr%></td>
+<td><%=iva%></td>
+<td><%=total%></td>
+</tr>
+<%} %>
+</table>
 </body>
 </html>

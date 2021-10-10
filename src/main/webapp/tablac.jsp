@@ -7,14 +7,11 @@
 <title>Proyecto</title>
 <link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/table.css">
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/reporte.js"></script>
 </head>
 <body>
-<%! String cedula,tel,nom,dir,email;%>
-<%cedula=request.getParameter("cedula");
-nom=request.getParameter("nombre");
-dir=request.getParameter("direc");
-tel=request.getParameter("tel");
-email=request.getParameter("email");%>
+<%! String cedula="",tel="",nom="",dir="",email="",h2;%>
 <header class="cont-header">
 <div class="logo-titulo">
 <h1 class="h1" id="h1">Tienda Generica</h1>
@@ -22,37 +19,51 @@ email=request.getParameter("email");%>
 </div>
 <input class="loginusu" type="text" value="${usu.getUsuario()}">
 <nav class="nav">
-<ul>
-<li><a href="index.jsp">Index</a>
-<li><a href="menu.jsp">Menu</a></li>
-<li><a href="usuarios.jsp">Usuarios</a></li>
-<li><a href="clientes.jsp">Clientes</a>
-<li><a href="">Proveedores</a></li>
-<li><a href="">Productos</a></li>
-<li><a href="">Ventas</a></li>
-<li><a href="">Reportes</a></li>
+<ul class="ul">
+<li class="li"><a href="menu.jsp">Menu</a></li>
+<li class="li"><a href="usuarios.jsp">Usuarios</a></li>
+<li class="li"><a href="clientes.jsp">Clientes</a>
+<li class="li"><a href="proveedores.jsp">Proveedores</a></li>
+<li class="li"><a href="productos.jsp">Productos</a></li>
+<li class="li"><a href="ventas.jsp">Ventas</a></li>
+<li class="li"><a href="reportes.jsp">Reportes</a></li>
+<li class="li"><a href="index.jsp">Salir</a></li>
 </ul>
 </nav>
 </header>
-<table class="tabla">
-<thead class="encabezado">
-<tr class="cont_enc">
+<h2><%=h2%></h2>
+<fieldset class="cont-form">
+<form action="ServletReporte" method="post">
+<label>Cedula
+<input class="cedula" type="number" name="cedula">
+</label>
+<input type="submit" name="cons" value="Consultar">
+<input class="cli" type="button" name="consg" value="Consulta General">
+<table class="tablac" id="tablac">
+<%h2=request.getParameter("h2");
+if(request.getParameter("cedula")!=null){
+	cedula=request.getParameter("cedula");
+	nom=request.getParameter("nombre");
+	dir=request.getParameter("direc");
+	tel=request.getParameter("tel");
+	email=request.getParameter("email");
+	%>
+<tr>
 <th>Cedula</th>
 <th>Nombre</th>
 <th>Direccion</th>
 <th>Telefono</th>
 <th>Correo</th>
 </tr>
-</thead>
-<tbody class="body">
-<tr class="cont_body">
-<td><%=cedula%></td>
-<td><%=nom %></td>
+<tr><td><%=cedula%></td>
+<td><%=nom%></td>
 <td><%=dir%></td>
 <td><%=tel%></td>
-<td><%=email%></td>
-</tr>
-</tbody>
+<td><%=email%></td></tr>
+<%} %>
 </table>
+<input class="back" type="submit" name="back" value="Volver">
+</form>
+</fieldset>
 </body>
 </html>

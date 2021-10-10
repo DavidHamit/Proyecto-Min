@@ -1,0 +1,30 @@
+@charset "ISO-8859-1";
+legend{
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 30px;
+	color: #504233;
+	font-weight: bold;
+	margin-top:20px;
+	margin-bottom: 25px;
+}
+.cont-form{
+	margin-left: 510px;
+	height: 60%;
+	width: 25%;
+	background-color: #B3A190;
+    margin-left: auto;
+    margin-right: auto;
+}
+[type="submit"]{
+	margin-top: 15px;
+	display: block;
+	margin-bottom: 20px;
+	background-color: transparent;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;
+	height: 20px;
+	border: 1px solid #E0DFDF;
+    color:#E0DFDF;
+}

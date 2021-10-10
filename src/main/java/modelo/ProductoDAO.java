@@ -2,6 +2,7 @@ package modelo;
 
 import controlador.Conexion;
 import java.sql.*;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -38,5 +39,21 @@ public class ProductoDAO {
 		}
 		
 		return prodto;
+	}
+	
+	public ArrayList<ProductoDTO> consultag(){
+		ArrayList<ProductoDTO> lista=new ArrayList<ProductoDTO>();
+		try {
+			ps=cnn.prepareStatement("SELECT * FROM productos");
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				prodto=new ProductoDTO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getDouble(4), rs.getDouble(5), rs.getDouble(6));
+				lista.add(prodto);
+			}
+		}
+		catch(SQLException ex) {
+			JOptionPane.showMessageDialog(null, "Error en consulta: "+ex);
+		}
+		return lista;
 	}
 }

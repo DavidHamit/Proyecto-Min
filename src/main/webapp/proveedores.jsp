@@ -23,39 +23,29 @@
 <li class="li"><a href="usuarios.jsp">Usuarios</a></li>
 <li class="li"><a href="clientes.jsp">Clientes</a></li>
 <li class="li"><a href="productos.jsp">Productos</a></li>
-<li class="li"><a href="">Ventas</a></li>
-<li class="li"><a href="">Reportes</a></li>
+<li class="li"><a href="ventas.jsp">Ventas</a></li>
+<li class="li"><a href="reportes.jsp">Reportes</a></li>
 <li class="li"><a href="index.jsp">Salir</a></li>
 </ul>
 </nav>
 </header>
-<%
-String d="",n="",u="",t="",c="";
-if(request.getParameter("ni")!=null){
-	d=request.getParameter("ni");
-	n=request.getParameter("npr");
-	u=request.getParameter("di");
-	t=request.getParameter("te");
-	c=request.getParameter("ci");			
-}
-%>
 <fieldset class="cont-form">
 <legend> Menú Proovedores </legend>
 <form action="ServletProveedor" method="post" >
 <label for="">NIT
-<input type="number" name="nit_pr" value="<%=d%>">
+<input type="number" name="nit_pr">
 </label>
 <label for="">Nombre Proveedor
-<input type="text" name="nom_pr" value="<%=n%>">
+<input type="text" name="nom_pr">
 </label>
 <label for="">Dirección
-<input type="text" name="dir_pr" value="<%=u%>">
+<input type="text" name="dir_pr">
 </label>
 <label for="">Teléfono
-<input type="text" name="tel_pr" value="<%=t%>">
+<input type="text" name="tel_pr">
 </label>
 <label for="">Ciudad
-<input type="text" name="ciu_pr" value="<%=c%>">
+<input type="text" name="ciu_pr">
 </label>
 <label class="btn">
 <input type="submit" name="btncre" value="Crear">
@@ -68,8 +58,27 @@ if(request.getParameter("ni")!=null){
 <input class="conpro" type="button" name="btnpro" value="Consulta General">
 </form>
 <table class="tablapro" id="tablapro">
-
-
+<%
+String d="",n="",u="",t="",c="";
+if(request.getParameter("ni")!=null){
+	d=request.getParameter("ni");
+	n=request.getParameter("npr");
+	u=request.getParameter("di");
+	t=request.getParameter("te");
+	c=request.getParameter("ci");			
+%>
+<tr>
+<th>NIT</th>
+<th>Nombre</th>
+<th>Direccion</th>
+<th>Telefono</th>
+<th>Ciudad</th>
+</tr>
+<tr><td><%=d%></td>
+<td><%=n%></td>
+<td><%=t%></td>
+<td><%=c%></td>
+<%} %>
 </table>
 <form class="acabado" action="">
 </form>
