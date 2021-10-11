@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 
 import modelo.ClienteDAO;
 import modelo.ClienteDTO;
+import modelo.DetalleVentaDAO;
+import modelo.DetalleVentaDTO;
 import modelo.ProductoDAO;
 import modelo.ProductoDTO;
 import modelo.VentasDAO;
@@ -24,7 +26,7 @@ import modelo.VentasDTO;
 public class ServletVentas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        double iva1,iva2,iva3;
-       int cant1,cant2,cant3;
+       int can1,can2,can3;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -109,15 +111,15 @@ public class ServletVentas extends HttpServlet {
 			prec2=Double.parseDouble(request.getParameter("precio2"));
 			prec3=Double.parseDouble(request.getParameter("precio3"));
 			
-			cant1=Integer.parseInt(request.getParameter("cant1"));
-			cant2=Integer.parseInt(request.getParameter("cant2"));
-			cant3=Integer.parseInt(request.getParameter("cant3"));
+			can1=Integer.parseInt(request.getParameter("cant1"));
+			can2=Integer.parseInt(request.getParameter("cant2"));
+			can3=Integer.parseInt(request.getParameter("cant3"));
 			
 			
 			
-			vlr1=cant1*prec1;
-			vlr2=cant2*prec2;
-			vlr3=cant3*prec3;
+			vlr1=can1*prec1;
+			vlr2=can2*prec2;
+			vlr3=can3*prec3;
 			tsv=vlr1+vlr2+vlr3;
 			tiva1=(vlr1*iva1)/100;
 			tiva2=(vlr2*iva2)/100;
@@ -143,17 +145,74 @@ public class ServletVentas extends HttpServlet {
 				x=ven.registrar(vdto);
 				if(x>0) {
 					JOptionPane.showMessageDialog(null, "Venta Registrada");
-					
 					//DETALLE DE VENTAS
-					int cant,codprod,codventa;
-					double iv,psv,pago;
-					boolean result;
-					VentasDTO vendto;
-					VentasDAO vent=new VentasDAO();
-					vendto=vent.consultacodigo();
+					long codven;
+					int can,z;
+					double iv,dtv,dvv;
 					
+					VentasDTO venn;
+					DetalleVentaDTO dd;
+					DetalleVentaDAO dedao;
+					long codprod1=Long.parseLong(request.getParameter("codigo1"));
+					long codprod2=Long.parseLong(request.getParameter("codigo2"));
+					long codprod3=Long.parseLong(request.getParameter("codigo3"));
+					VentasDAO vend=new VentasDAO();
+					venn=vend.consultacodigo();
+					
+					can=can1;
+					if(can>0) {
+						codven=venn.getCodigo();
+						iv=venn.getIva();
+						dtv=venn.getTotal();
+						dvv=venn.getVlrventa();
+						dd=new DetalleVentaDTO(codprod1, codven, can, dvv, dtv, iv);
+						dedao=new DetalleVentaDAO();
+						z=dedao.ingresardetventa(dd);
+						if(z>0) {
+							JOptionPane.showMessageDialog(null, "detalle 1 insertado");
+						}
+						
 					}
-				
+					else {
+						JOptionPane.showMessageDialog(null, "No ingresó cantidad");
+					}
+					can=can2;
+					if(can>0) {
+						codven=venn.getCodigo();
+						iv=venn.getIva();
+						dtv=venn.getTotal();
+						dvv=venn.getVlrventa();
+						dd=new DetalleVentaDTO(codprod2, codven, can, dvv, dtv, iv);
+						dedao=new DetalleVentaDAO();
+						z=dedao.ingresardetventa(dd);
+						if(z>0) {
+							JOptionPane.showMessageDialog(null, "detalle 2 insertado");
+						}
+						
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "No ingresó cantidad");
+					}
+					can=can3;
+					if(can>0) {
+						codven=venn.getCodigo();
+						iv=venn.getIva();
+						dtv=venn.getTotal();
+						dvv=venn.getVlrventa();
+						dd=new DetalleVentaDTO(codprod3, codven, can, dvv, dtv, iv);
+						dedao=new DetalleVentaDAO();
+						z=dedao.ingresardetventa(dd);
+						if(z>0) {
+							JOptionPane.showMessageDialog(null, "detalle 3 insertado");
+							response.sendRedirect("ventas.jsp");
+						}
+						
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "No ingresó cantidad");
+					}
+					
+				}
 				else {
 					JOptionPane.showMessageDialog(null, "No se registro la venta");
 					response.sendRedirect("ventas.jsp");
