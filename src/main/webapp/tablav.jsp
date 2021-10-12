@@ -11,7 +11,7 @@
 <script type="text/javascript" src="js/reporte.js"></script>
 </head>
 <body>
-<%! String cedula="",tel="",nom="",dir="",email="",h2;%>
+<%! String cedula="",total="",nom="",vtotal="",h2;%>
 <header class="cont-header">
 <div class="logo-titulo">
 <h1 class="h1" id="h1">Tienda Generica</h1>
@@ -36,34 +36,34 @@
 <h2><%=h2%></h2>
 <fieldset class="cont-form">
 <form action="ServletReporte" method="post">
-<label>Cedula
-<input class="cedula" type="number" name="cedula">
+<label>Codigo de Venta
+<input class="codven" type="number" name="codven">
 </label>
-<input type="submit" name="consc" value="Consultar">
-<input class="cli" type="button" name="consg" value="Consulta General">
-<table class="tablac" id="tablac">
-<%if(request.getParameter("cedula")!=null){
-	cedula=request.getParameter("cedula");
-	nom=request.getParameter("nombre");
-	dir=request.getParameter("direc");
-	tel=request.getParameter("tel");
-	email=request.getParameter("email");
+<input type="submit" name="cons" value="Consultar">
+<input class="vent" id="vent" type="button" name="consg" value="Consulta General">
+<table class="tablav" id="tablav">
+<%cedula=request.getParameter("ced");
+	nom=request.getParameter("nom");
+	total=request.getParameter("vlr");
+	vtotal=request.getParameter("sum");
+	HttpSession sesion=request.getSession();
 	%>
 <tr>
 <th>Cedula</th>
 <th>Nombre</th>
-<th>Direccion</th>
-<th>Telefono</th>
-<th>Correo</th>
+<th>Valor Total de Venta</th>
 </tr>
-<tr><td><%=cedula%></td>
+<tr>
+<td><%=cedula%></td>
 <td><%=nom%></td>
-<td><%=dir%></td>
-<td><%=tel%></td>
-<td><%=email%></td></tr>
-<%} %>
+<td><%=total%></td>
+</tr>
 </table>
-
+<table id="tablan" class="tablan">
+</table>
+<label class="total">Total Ventas $
+<input value="${suma}" class="sum">
+</label>
 <input class="back" type="submit" name="back" value="Volver">
 </form>
 </fieldset>

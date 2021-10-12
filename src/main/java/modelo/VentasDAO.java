@@ -2,6 +2,7 @@ package modelo;
 
 import controlador.Conexion;
 import java.sql.*;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -42,5 +43,36 @@ public class VentasDAO {
 			JOptionPane.showMessageDialog(null, "Error en consultar: "+ex);
 		}
 		return vdto;
+	}
+	
+	public VentasDTO consultaced(VentasDTO ven) {
+		try {
+			ps=cnn.prepareStatement("SELECT cedula_cliente, valor_total_venta FROM ventas WHERE codigo_venta=?");
+			ps.setInt(1, ven.getCodigo());
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				vdto=new VentasDTO(rs.getInt(1), rs.getDouble(2));
+			}
+		}
+		catch(SQLException ex) {
+			JOptionPane.showMessageDialog(null, "Error al consultar: "+ex);
+		}
+		return vdto;
+	}
+	
+	public ArrayList<VentasDTO> consulta() {
+		ArrayList<VentasDTO> lista=new ArrayList<>();
+		try {
+			ps=cnn.prepareStatement("SELECT cedula_cliente, valor_total_venta FROM ventas");
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				vdto=new VentasDTO(rs.getInt(1),rs.getDouble(2));
+				lista.add(vdto);
+			}
+		}
+		catch(SQLException ex) {
+			JOptionPane.showMessageDialog(null, "Error en conulta: "+ex);
+		}
+		return lista;
 	}
 }

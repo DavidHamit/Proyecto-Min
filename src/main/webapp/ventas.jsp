@@ -69,7 +69,7 @@
 </tr>
 </tbody>
 </table>
-<input type="hidden" name="cedusu" value="${usuario.getCedula()}">
+<input type="hidden" name="cedusu" value="${usu.getCedula()}">
 </form>
 </fieldset>
 </body>

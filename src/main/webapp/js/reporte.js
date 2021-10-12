@@ -68,10 +68,38 @@ $(document).ready(function(){
 			data:{dato:"ven"},
 			success: function( result){
 				console.log(result);
+				let datos=document.querySelector("#tablav");
+				datos.innerHTML='';
+				datos.innerHTML+=`<tr><th>Cedula</th>
+								<th>Nombre</th>
+								<th>Valor Total Ventas</th></tr>`;
+				for(let i of result){
+					datos.innerHTML+=`<tr><td>${i.cedcli}</td>
+									<td>${i.nombre}</td>
+									<td>${i.total}</td></tr>`;
+				}
 			}
 		});
 	}
 	
+	function nombventa(){
+		alert("nombres");
+		$.ajax({
+			type:"get",
+			url:"ServletReporte",
+			dataType:'json',
+			data:{dat:"nom"},
+			success: function( result){
+				console.log(result);
+				let datos=document.querySelector("#tablan");
+				datos.innerHTML='';
+				datos.innerHTML+=`<tr><th>Nombre</th></tr>`;
+				for(let i of result){
+					datos.innerHTML+=`<tr><td>${i.nombre}</td></tr>`;
+				}
+			}
+		});
+	}
 	
 	$('.usu').on('click', function(){
 		listausuario();
@@ -81,7 +109,8 @@ $(document).ready(function(){
 		listacliente();
 	});
 	
-	$('.ven').on('click', function(){
+	$('.vent').on('click', function(){
 		listaventa();
+		nombventa();
 	});
 });

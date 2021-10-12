@@ -10,7 +10,7 @@ public class Conexion {
 	public Connection conexionbd() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			cnn=DriverManager.getConnection("jdbc:mysql://localhost/tienda_reto_mintic","root","");
+			cnn=DriverManager.getConnection("jdbc:mysql://localhost/tienda_reto_mintic","root","admin");
 			JOptionPane.showMessageDialog(null, "Conexion ok");
 		}
 		catch(Exception ex) {
