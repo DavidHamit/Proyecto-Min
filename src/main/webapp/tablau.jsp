@@ -11,7 +11,7 @@
 <script type="text/javascript" src="js/reporte.js"></script>
 </head>
 <body>
-<%! String cedula="",tel="",nom="",dir="",email="",h2;%>
+<%! String c="",n="",e="",u="",p="",h2;%>
 <header class="cont-header">
 <div class="logo-titulo">
 <h1 class="h1" id="h1">Tienda Generica</h1>
@@ -37,32 +37,32 @@
 <label>Cedula
 <input class="cedula" type="number" name="cedula">
 </label>
-<input type="submit" name="consc" value="Consultar">
-<input class="cli" type="button" name="consg" value="Consulta General">
-<table class="tablac" id="tablac">
+<input type="submit" name="cons" value="Consultar">
+<input class="usu" type="button" name="consg" value="Consulta General">
+
+<table class="tablau" id="tablau">
 <%h2=request.getParameter("h2");
-if(request.getParameter("cedula")!=null){
-	cedula=request.getParameter("cedula");
-	nom=request.getParameter("nombre");
-	dir=request.getParameter("direc");
-	tel=request.getParameter("tel");
-	email=request.getParameter("email");
+if(request.getParameter("cedula")!=null) {
+	c=request.getParameter("cedula");
+	n=request.getParameter("nombre");
+	e=request.getParameter("correo");
+	u=request.getParameter("usu");
+	p=request.getParameter("pass");
 	%>
 <tr>
-<th>Cedula</th>
+<th>Documento</th>
 <th>Nombre</th>
-<th>Direccion</th>
-<th>Telefono</th>
 <th>Correo</th>
+<th>Usuario</th>
+<th>Clave</th>
 </tr>
-<tr><td><%=cedula%></td>
-<td><%=nom%></td>
-<td><%=dir%></td>
-<td><%=tel%></td>
-<td><%=email%></td></tr>
+<tr><td><%=c%></td>
+<td><%=n%></td>
+<td><%=e%></td>
+<td><%=u%></td>
+<td><%=p%></td></tr>
 <%} %>
 </table>
-
 <input class="back" type="submit" name="back" value="Volver">
 </form>
 </fieldset>

@@ -8,6 +8,26 @@ $(document).ready(function(){
 			data:{dato:"usu"},
 			success: function( result ){
 				console.log(result);
+        let datos=document.querySelector('#tablau');
+        console.log(datos);
+        datos.innerHTML='';
+        datos.innerHTML+= `<tr>
+           <th>Documento</th>
+           <th>Nombre</th>
+           <th>Correo</th>
+           <th>Usuario</th>
+           <th>Clave</th>
+
+           </tr>`;
+        for (let i of result){
+        	datos.innerHTML+=`<tr> <td>${i.cedula}</td>
+                                   <td>${i.nombre}</td> 
+                                   <td>${i.correo}</td> 
+                                   <td>${i.usuario}</td> 
+                                   <td>${i.password}</td> 
+
+            </tr>`;
+			}
 			}
 		});
 	}
