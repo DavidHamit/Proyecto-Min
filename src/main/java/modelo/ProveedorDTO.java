@@ -4,9 +4,11 @@ public class ProveedorDTO {
 	private int nit;
 	private String nom;
 	private String dir;
-	private String tel;
+	private int tel;
 	private String ciudad;
-	public ProveedorDTO(int nit, String nom, String dir, String tel, String ciudad) {
+	
+	public ProveedorDTO(int nit, String nom, String dir, int tel, String ciudad) {
+		super();
 		this.nit = nit;
 		this.nom = nom;
 		this.dir = dir;
@@ -36,10 +38,10 @@ public class ProveedorDTO {
 	public void setDir(String dir) {
 		this.dir = dir;
 	}
-	public String getTel() {
+	public int getTel() {
 		return tel;
 	}
-	public void setTel(String tel) {
+	public void setTel(int tel) {
 		this.tel = tel;
 	}
 	public String getCiudad() {
@@ -48,9 +50,6 @@ public class ProveedorDTO {
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
-
-
-
 
 }
 

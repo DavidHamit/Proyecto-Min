@@ -33,19 +33,19 @@
 <legend> Menú Proovedores </legend>
 <form action="ServletProveedor" method="post" >
 <label for="">NIT
-<input type="number" name="nit_pr">
+<input type="number" name="nitpr" value="">
 </label>
 <label for="">Nombre Proveedor
-<input type="text" name="nom_pr">
+<input type="text" name="nompr">
 </label>
 <label for="">Dirección
-<input type="text" name="dir_pr">
+<input type="text" name="dirpr">
 </label>
 <label for="">Teléfono
-<input type="text" name="tel_pr">
+<input type="number" name="telpr" value="">
 </label>
 <label for="">Ciudad
-<input type="text" name="ciu_pr">
+<input type="text" name="ciupr">
 </label>
 <label class="btn">
 <input type="submit" name="btncre" value="Crear">
@@ -57,15 +57,15 @@
 <form action="ServletProovedor" method="post">
 <input class="conpro" type="button" name="btnpro" value="Consulta General">
 </form>
-<table class="tablapro" id="tablapro">
-<%
-String d="",n="",u="",t="",c="";
-if(request.getParameter("ni")!=null){
-	d=request.getParameter("ni");
-	n=request.getParameter("npr");
-	u=request.getParameter("di");
-	t=request.getParameter("te");
-	c=request.getParameter("ci");			
+</fieldset>
+<table class="tablap" id="tablap">
+<%! String d="",n="",u="",t="",c="";%>
+<%if(request.getParameter("nitpr")!=null){
+	d=request.getParameter("nitpr");
+	n=request.getParameter("nompr");
+	u=request.getParameter("dirpr");
+	t=request.getParameter("telpr");
+	c=request.getParameter("ciupr");			
 %>
 <tr>
 <th>NIT</th>
@@ -81,8 +81,5 @@ if(request.getParameter("ni")!=null){
 <td><%=c%></td>
 <%} %>
 </table>
-<form class="acabado" action="">
-</form>
-</fieldset>
 </body>
 </html>

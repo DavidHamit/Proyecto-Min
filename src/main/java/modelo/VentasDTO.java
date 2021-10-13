@@ -33,6 +33,12 @@ public class VentasDTO {
 		this.total = total;
 	}
 
+	public VentasDTO(int cedcli, double total) {
+		super();
+		this.cedcli = cedcli;
+		this.total = total;
+	}
+
 	public VentasDTO(int codigo) {
 		this.codigo = codigo;
 	}

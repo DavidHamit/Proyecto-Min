@@ -98,10 +98,10 @@ $(document).ready(function(){
 			type:"post",
 			url:"ServletProveedor",
 			dataType:'json',
-			data:{dat:"proovedor"},
+			data:{dat:"proveedor"},
 			success: function( result ){
 				console.log(result);
-				let datos=document.querySelector('#tablapro');
+				let datos=document.querySelector('#tablap');
 				console.log(datos);
 				datos.innerHTML='';
 				datos.innerHTML+=`<tr><th>NIT</th>
@@ -110,11 +110,11 @@ $(document).ready(function(){
 				<th>Telefono</th>
 				<th>Ciudad</th></tr>`;
 				for(let i of result){
-					datos.innerHTML+=`<tr><td>${i.nit}</td>
-					<td>${i.nom}</td>
-					<td>${i.dir}</td>
-					<td>${i.tel}</td>
-					<td>${i.ciudad}</td></tr>`;
+					datos.innerHTML+=`<tr><td>${i.nitpr}</td>
+					<td>${i.nompr}</td>
+					<td>${i.dirpr}</td>
+					<td>${i.telpr}</td>
+					<td>${i.ciupr}</td></tr>`;
 				}
 			}
 		});

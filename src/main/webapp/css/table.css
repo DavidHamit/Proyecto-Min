@@ -33,9 +33,9 @@ td{
 [type="button"]{
 	border-radius: 5px;
 	display: flex;
-	margin-left: 230px;
+	margin-left: 250px;
 	margin-top: 10px;
-	width: 170px;
+	width: 125px;
 	height: 25px;
 	margin-bottom: 10px;
 }
@@ -62,4 +62,37 @@ h2{
 	background-color: transparent;
     border: 0;
     border-bottom: 2px solid #E0DFDF;
+}
+.cedven{
+	background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid #E0DFDF;
+}
+.tablan{
+	margin-left: 15.8%;
+	display: fex;
+	margin-top: -8.5%;
+	position: fixed;
+	width: 17%;  
+}
+.total{
+	width: 30%;
+	display: inline;
+	font-size: 18px;
+	color: #000;
+	font-weight: bold;
+	margin-left: 255px; 
+}
+.sum{
+	background-color: transparent;
+	margin-left: 10px;
+	border: 2px solid #091053;
+	background-color: rgb(245, 217, 165);
+	font-size: 15px;
+	color: #000;
+	width: 33%;
+	margin-bottom: 10px;
+}
+.tablav{
+	margin-bottom: 10px;
 }
