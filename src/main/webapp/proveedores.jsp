@@ -76,6 +76,7 @@ if(request.getParameter("ni")!=null){
 </tr>
 <tr><td><%=d%></td>
 <td><%=n%></td>
+<td><%=u%></td>
 <td><%=t%></td>
 <td><%=c%></td>
 <%} %>
