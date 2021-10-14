@@ -1,0 +1,81 @@
+@charset "ISO-8859-1";
+th{
+	width: 300px;
+	border: 2px solid #091053;
+	background-color: rgb(245, 217, 165);
+}
+td{
+	width: 300px;
+	border: 2px solid #091053;
+	background-color: rgb(245, 217, 165);
+}
+.cont-form{
+	border: 0;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #B3A190;
+	width: 50%;
+}
+[type="submit"]{
+	display: inline;
+	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80px;
+	height: 25px;
+}
+[type="button"]{
+	border-radius: 5px;
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+	width: 170px;
+	height: 25px;
+	margin-bottom: 10px;
+}
+label{
+	display: inline;
+	margin-left: 85%;
+    font-size: 20px;
+	color: #504233;
+	font-weight: bold;
+}
+h2{
+	margin-left: 510px;
+	font-size: 30px;
+	color: #504233;
+	font-weight: bold;
+	margin-top:20px;
+	margin-bottom: 25px;
+}
+.back{
+	margin-top: 15px;
+	margin-left: 280px;
+}
+.cedula{
+	background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid #E0DFDF;
+}
+.cedven{
+	background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid #E0DFDF;
+}
+.tablan{
+	margin-left: 16.3%;
+	display: fex;
+	margin-top: -77.5px;
+	position: fixed;
+	width: 17%;
+	height: 200px;
+}
+.total{
+	margin-left: 67%;
+	width: 33%;
+	display: block; 
+}
+.sum{
+	background-color: transparent;
+	border: 0;
+}
