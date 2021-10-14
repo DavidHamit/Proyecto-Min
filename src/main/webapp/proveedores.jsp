@@ -58,7 +58,7 @@
 <input class="conpro" type="button" name="btnpro" value="Consulta General">
 </form>
 </fieldset>
-<table class="tablap" id="tablap">
+<table class="tablapro" id="tablapro">
 <%! String d="",n="",u="",t="",c="";%>
 <%if(request.getParameter("nitpr")!=null){
 	d=request.getParameter("nitpr");

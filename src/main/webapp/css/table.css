@@ -96,3 +96,8 @@ h2{
 .tablav{
 	margin-bottom: 10px;
 }
+.nitpr{
+	background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid #E0DFDF;
+}

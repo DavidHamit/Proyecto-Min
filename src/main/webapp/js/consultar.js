@@ -110,11 +110,11 @@ $(document).ready(function(){
 				<th>Telefono</th>
 				<th>Ciudad</th></tr>`;
 				for(let i of result){
-					datos.innerHTML+=`<tr><td>${i.nitpr}</td>
-					<td>${i.nompr}</td>
-					<td>${i.dirpr}</td>
-					<td>${i.telpr}</td>
-					<td>${i.ciupr}</td></tr>`;
+					datos.innerHTML+=`<tr><td>${i.nit}</td>
+					<td>${i.nom}</td>
+					<td>${i.dir}</td>
+					<td>${i.tel}</td>
+					<td>${i.ciudad}</td></tr>`;
 				}
 			}
 		});
@@ -134,6 +134,7 @@ $(document).ready(function(){
 				datos.innerHTML+=`<tr><th>Codigo</th>
 								<th>Nombre</th>
 								<th>NIT Proveedor</th>
+								<th></th>
 								<th>Precio Compra</th>
 								<th>IVA</th>
 								<th>Precio Venta</th></tr>`;

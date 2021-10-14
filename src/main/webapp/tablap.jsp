@@ -40,7 +40,7 @@
 <input class="nitpr" type="number" name="nitpr">
 </label>
 <input type="submit" name="consp" value="Consultar">
-<input class="cli" type="button" name="consg" value="Consulta General">
+<input class="prov" type="button" name="consg" value="Consulta General">
 <table class="tablap" id="tablap">
 <%! String d="",n="",u="",t="",c="";%>
 <%if(request.getParameter("nitpr")!=null){

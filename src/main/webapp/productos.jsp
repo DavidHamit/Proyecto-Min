@@ -59,6 +59,7 @@
 <th>Codigo</th>
 <th>Nombre</th>
 <th>NIT Proveedor</th>
+<th></th>
 <th>Precio Compra</th>
 <th>IVA</th>
 <th>Precio Venta</th>

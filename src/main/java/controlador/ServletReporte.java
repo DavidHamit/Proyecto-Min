@@ -16,6 +16,8 @@ import com.google.gson.Gson;
 
 import modelo.ClienteDAO;
 import modelo.ClienteDTO;
+import modelo.ProductoDAO;
+import modelo.ProductoDTO;
 import modelo.ProveedorDAO;
 import modelo.ProveedorDTO;
 import modelo.UsuarioDAO;
@@ -43,40 +45,40 @@ public class ServletReporte extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//CONSULTA DE NOMBRES DE CLIENTE
-				Gson gson;
-				PrintWriter pw=response.getWriter();
-				String name;
-				name=request.getParameter("dat");
-				if(name!=null) {
-					if(name.equals("nom")) {
-						ArrayList<VentasDTO> lista=new ArrayList<VentasDTO>();
-						ArrayList<ClienteDTO> nombres=new ArrayList<ClienteDTO>();
-						VentasDAO ven=new VentasDAO();
-						VentasDTO vto;
-						ClienteDAO cli=new ClienteDAO();
-						ClienteDTO cto;
-						ClienteDTO cdto;
-						int ced;
-						String nom;
-						double sumven=0, vlr;
-						HttpSession sesion=request.getSession();
-						lista=ven.consulta();
-						for(int i=0; i<lista.size(); i++) {
-							vto=lista.get(i);
-							ced=vto.getCedcli();
-							vlr=vto.getTotal();
-							sumven+=vlr;
-							cto=new ClienteDTO(ced);
-							cdto=cli.consultarp(cto);
-							nom=cdto.getNombre();
-							JOptionPane.showMessageDialog(null, nom);
-							nombres.add(cdto);
-						}
-						sesion.setAttribute("suma", sumven);
-						gson=new Gson();
-						pw.println(gson.toJson(nombres));
-					}
+		Gson gson;
+		PrintWriter pw=response.getWriter();
+		String name;
+		name=request.getParameter("dat");
+		if(name!=null) {
+			if(name.equals("nom")) {
+				ArrayList<VentasDTO> lista=new ArrayList<VentasDTO>();
+				ArrayList<ClienteDTO> nombres=new ArrayList<ClienteDTO>();
+				VentasDAO ven=new VentasDAO();
+				VentasDTO vto;
+				ClienteDAO cli=new ClienteDAO();
+				ClienteDTO cto;
+				ClienteDTO cdto;
+				int ced;
+				String nom;
+				double sumven=0, vlr;
+				HttpSession sesion=request.getSession();
+				lista=ven.consulta();
+				for(int i=0; i<lista.size(); i++) {
+					vto=lista.get(i);
+					ced=vto.getCedcli();
+					vlr=vto.getTotal();
+					sumven+=vlr;
+					cto=new ClienteDTO(ced);
+					cdto=cli.consultarp(cto);
+					nom=cdto.getNombre();
+					JOptionPane.showMessageDialog(null, nom);
+					nombres.add(cdto);
 				}
+				sesion.setAttribute("suma", sumven);
+				gson=new Gson();
+				pw.println(gson.toJson(nombres));
+			}
+		}
 	}
 
 	/**
@@ -108,6 +110,12 @@ public class ServletReporte extends HttpServlet {
 						titulo.setAttribute("h2", "Consulta de Proveedores");
 						response.sendRedirect("tablap.jsp");
 					}
+					else
+						if(request.getParameter("producto")!=null) {
+							JOptionPane.showMessageDialog(null, "if producto");
+							titulo.setAttribute("h2", "Listado de Productos");
+							response.sendRedirect("tablaprod.jsp");
+						}
 		String opc;
 		opc=request.getParameter("dato");
 		if(opc!=null) {
@@ -121,8 +129,14 @@ public class ServletReporte extends HttpServlet {
 				ArrayList<ClienteDTO> lista=new ArrayList<ClienteDTO>();
 				lista=cl.consulta();
 				JOptionPane.showMessageDialog(null, lista.size());
-				gson=new Gson();
-				pw.println(gson.toJson(lista));
+				if(lista!=null) {
+					gson=new Gson();
+					pw.println(gson.toJson(lista));
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No existe ningun cliente");
+					response.sendRedirect("tablaprod.jsp");
+				}
 			}
 			
 			//CONSULTA GENERAL DE USUARIOS
@@ -131,8 +145,14 @@ public class ServletReporte extends HttpServlet {
 				ArrayList<UsuarioDTO> lista=new ArrayList<UsuarioDTO>();
 				lista=usdao.consultar();
 				JOptionPane.showMessageDialog(null, lista.size());
-				gson=new Gson();
-				pw.println(gson.toJson(lista));
+				if(lista!=null) {
+					gson=new Gson();
+					pw.println(gson.toJson(lista));
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No existe ningun usuario");
+					response.sendRedirect("tablaprod.jsp");
+				}
 			}
 			
 			//CONSULTA GENERAL DE PROVEEDORES
@@ -141,8 +161,14 @@ public class ServletReporte extends HttpServlet {
 				ArrayList<ProveedorDTO> lista=new ArrayList<ProveedorDTO>();
 				lista=pdao.consulta();
 				JOptionPane.showMessageDialog(null, lista.size());
-				gson=new Gson();
-				pw.println(gson.toJson(lista));
+				if(lista!=null) {
+					gson=new Gson();
+					pw.println(gson.toJson(lista));
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No existe ningun proveedor");
+					response.sendRedirect("tablaprod.jsp");
+				}
 			}
 			
 			//CONSULTA GENERAL DE VENTAS
@@ -170,8 +196,30 @@ public class ServletReporte extends HttpServlet {
 					nombres.add(nom);
 				}
 				sesion.setAttribute("suma", sumven);
-				gson=new Gson();
-				pw.println(gson.toJson(lista));
+				if(lista!=null) {
+					gson=new Gson();
+					pw.println(gson.toJson(lista));
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No existe ninguna venta");
+					response.sendRedirect("tablaprod.jsp");
+				}
+			}
+			
+			//CONSULTA GENERAL DE PRODUCTOS
+			if(opc.equals("prod")) {
+				ArrayList<ProductoDTO> lista=new ArrayList<ProductoDTO>();
+				ProductoDAO prod=new ProductoDAO();
+				lista=prod.consultag();
+				JOptionPane.showMessageDialog(null, lista.size());
+				if(lista!=null) {
+					gson=new Gson();
+					pw.println(gson.toJson(lista));
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No existe ningun producto");
+					response.sendRedirect("tablaprod.jsp");
+				}
 			}
 		}
 		
@@ -296,6 +344,34 @@ public class ServletReporte extends HttpServlet {
 										"&&dirpr="+dir+"&&telpr="+tel+"&&ciupr="+ciu+"&&h2=Listado de Proveedores");
 							}
 						}
+						else
+							//CONSULTA PARTICULAR DE PRODUCTOS
+							if(request.getParameter("codprod")!=null){
+								int cod,nit,codigo;
+								String nomprod;
+								double iva,prec,venta;
+								JOptionPane.showMessageDialog(null, "Consulta Producto");
+								ProductoDAO prod=new ProductoDAO();
+								ProductoDTO pdto;
+								ProductoDTO dto;
+								cod=Integer.parseInt(request.getParameter("codprod"));
+								pdto=new ProductoDTO(cod);
+								dto=prod.consulta(pdto);
+								if(dto!=null) {
+									codigo=dto.getCodigo();
+									nit=dto.getNit();
+									nomprod=dto.getNomprod();
+									iva=dto.getIva();
+									prec=dto.getPrecompra();
+									venta=dto.getPrecventa();
+									response.sendRedirect("tablaprod.jsp?codigo="+codigo+"&&nit="+nit+"&&nomprod="+nomprod+
+											"&&iva="+iva+"&&prec="+prec+"&&venta="+venta);
+								}
+								else {
+									JOptionPane.showMessageDialog(null, "No existe ese producto");
+									response.sendRedirect("tablaprod.jsp");
+								}
+							}
 	}
 }
 

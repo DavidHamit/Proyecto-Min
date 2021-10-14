@@ -119,15 +119,45 @@ $(document).ready(function(){
 				<th>Telefono</th>
 				<th>Ciudad</th></tr>`;
 				for(let i of result){
-					datos.innerHTML+=`<tr><td>${i.nitpr}</td>
-					<td>${i.nompr}</td>
-					<td>${i.dirpr}</td>
-					<td>${i.telpr}</td>
-					<td>${i.ciupr}</td></tr>`;
+					datos.innerHTML+=`<tr><td>${i.nit}</td>
+					<td>${i.nom}</td>
+					<td>${i.dir}</td>
+					<td>${i.tel}</td>
+					<td>${i.ciudad}</td></tr>`;
 				}
 			}
 		});
 	}	
+	
+	function listaproducto(){
+		alert("producto");
+		$.ajax({
+			type:"post",
+			url:"ServletReporte",
+			dataType:'json',
+			data:{dato:"prod"},
+			success: function( result ){
+				console.log(result);
+				let datos=document.querySelector("#tablaprod");
+				datos.innerHTML='';
+				datos.innerHTML+=`<tr><th>Codigo</th>
+								<th>Nombre</th>
+								<th>NIT Proveedor</th>
+								<th>Precio Venta</th>
+								<th>IVA</th>
+								<th>Precio Compra</th></tr>`;
+				for(let i of result){
+					datos.innerHTML+=`<tr><td>${i.codigo}</td>
+									<td>${i.nomprod}</td>
+									<td>${i.nit}</td>
+									<td>${i.precompra}</td>
+									<td>${i.iva}</td>
+									<td>${i.precventa}</td></tr>`;
+									
+				}
+			}
+		});
+	}
 	
 	$('.usu').on('click', function(){
 		listausuario();
@@ -142,7 +172,11 @@ $(document).ready(function(){
 		nombventa();
 	});
 	
-	$('.consg').on('click',function(){
+	$('.prov').on('click',function(){
 		listaproveedores();
+	});
+	
+	$('.prod').on('click', function(){
+		listaproducto();
 	});
 });

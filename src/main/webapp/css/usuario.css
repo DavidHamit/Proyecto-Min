@@ -87,17 +87,17 @@ label{
     height:100px;
     margin-bottom:15px;
     background-color: #B3A190;
-    width: 60%;
+    width: 65%;
 }
 th{
 	border-right: 1px solid #091053;
 	border-bottom: 1px solid #091053;
 	border-radius: 5px;
-	width: 60%;
+	width: 65%;
 	background-color: #B3A190;
 }
 tr{
-	width: 60%;
+	width: 65%;
 	border-right: 1px solid #091053;
 	background-color: #B3A190;
 }
@@ -106,5 +106,5 @@ td{
 	border-bottom: 1px solid #091053;
 	border-radius: 5px;
 	background-color: #B3A190;
-	width: 60%;
+	width: 65%;
 }
