@@ -50,9 +50,11 @@ public class ServletVentas extends HttpServlet {
 		HttpSession sesion=request.getSession();
 		double prec1,prec2,prec3,vlr1,vlr2,vlr3,tsv,tiva,total;
 		double tiva1,tiva2,tiva3;
+		String mensaje, opcion, alert;
+		
 		//CONSULTAR NOMBRE DEL CLIENTE
 		if(request.getParameter("cedcli")!=null) {
-			JOptionPane.showMessageDialog(null, "En if");
+			//JOptionPane.showMessageDialog(null, "En if");
 			int cedula;
 			ClienteDTO clidto;
 			ClienteDAO cli;
@@ -144,7 +146,9 @@ public class ServletVentas extends HttpServlet {
 				vdto=new VentasDTO(cedcli,cedusu,iva,tsiva,totalv);
 				x=ven.registrar(vdto);
 				if(x>0) {
-					JOptionPane.showMessageDialog(null, "Venta Registrada");
+					//JOptionPane.showMessageDialog(null, "Venta Registrada");
+					alert="Venta Registrada";
+					sesion.setAttribute("alert", alert);
 					//DETALLE DE VENTAS
 					long codven;
 					int can,z;
@@ -169,12 +173,16 @@ public class ServletVentas extends HttpServlet {
 						dedao=new DetalleVentaDAO();
 						z=dedao.ingresardetventa(dd);
 						if(z>0) {
-							JOptionPane.showMessageDialog(null, "detalle 1 insertado");
+							//JOptionPane.showMessageDialog(null, "detalle 1 insertado");
+							alert="Producto 1 registrado";
+							sesion.setAttribute("alert", alert);
 						}
 						
 					}
 					else {
-						JOptionPane.showMessageDialog(null, "No ingresó cantidad");
+						//JOptionPane.showMessageDialog(null, "No ingresó cantidad");
+						mensaje="No ingresó cantidad";
+						response.sendRedirect("ventas.jsp?mensaje="+mensaje);
 					}
 					can=can2;
 					if(can>0) {
@@ -186,12 +194,16 @@ public class ServletVentas extends HttpServlet {
 						dedao=new DetalleVentaDAO();
 						z=dedao.ingresardetventa(dd);
 						if(z>0) {
-							JOptionPane.showMessageDialog(null, "detalle 2 insertado");
+							//JOptionPane.showMessageDialog(null, "detalle 2 insertado");
+							alert="Producto 2 Registrado";
+							sesion.setAttribute("alert", alert);
 						}
 						
 					}
 					else {
-						JOptionPane.showMessageDialog(null, "No ingresó cantidad");
+						//JOptionPane.showMessageDialog(null, "No ingresó cantidad");
+						mensaje="No ingreso cantidad";
+						response.sendRedirect("ventasjsp?mensaje="+mensaje);
 					}
 					can=can3;
 					if(can>0) {
@@ -203,29 +215,36 @@ public class ServletVentas extends HttpServlet {
 						dedao=new DetalleVentaDAO();
 						z=dedao.ingresardetventa(dd);
 						if(z>0) {
-							JOptionPane.showMessageDialog(null, "detalle 3 insertado");
+							//JOptionPane.showMessageDialog(null, "detalle 3 insertado");
+							alert="Productos Registrados";
+							sesion.setAttribute("alert", alert);
 							response.sendRedirect("ventas.jsp");
 						}
 						
 					}
 					else {
-						JOptionPane.showMessageDialog(null, "No ingresó cantidad");
+						//JOptionPane.showMessageDialog(null, "No ingresó cantidad");
+						mensaje="No ingresó cantidad";
+						response.sendRedirect("ventas.jsp");
 					}
 					
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "No se registro la venta");
-					response.sendRedirect("ventas.jsp");
+					//JOptionPane.showMessageDialog(null, "No se registro la venta");
+					mensaje="No se registro la venta";
+					response.sendRedirect("ventas.jsp?mensaje="+mensaje);
 				}
 			}
 			else
 				if(i==1) {
-					JOptionPane.showMessageDialog(null, "Venta NO registrada");
-					response.sendRedirect("ventas.jsp");
+					//JOptionPane.showMessageDialog(null, "Venta NO registrada");
+					mensaje="Venta NO registrada";
+					response.sendRedirect("ventas.jsp?mensaje="+mensaje);
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "Venta cancelada");
-					response.sendRedirect("ventas.jsp");
+					//JOptionPane.showMessageDialog(null, "Venta cancelada");
+					mensaje="Venta cancelada";
+					response.sendRedirect("ventas.jsp?mensaje="+mensaje);
 				}
 		}
 	}

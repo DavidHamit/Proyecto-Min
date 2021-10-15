@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 import modelo.LoginDAO;
 import modelo.LoginDTO;
@@ -39,6 +39,7 @@ public class ServletLogin extends HttpServlet {
 		int x=0;
 		ArrayList<LoginDTO> lista=new ArrayList<>();
 		HttpSession sesion=request.getSession();
+		String mensaje;
 		if(request.getParameter("btnacep")!=null) {
 			usuario=request.getParameter("usu");
 			password=request.getParameter("pass");
@@ -54,8 +55,9 @@ public class ServletLogin extends HttpServlet {
 					}
 				}
 				if(x==0) {
-					JOptionPane.showMessageDialog(null, "Error en usuario y/o contraseña");
-					response.sendRedirect("index.jsp");
+					//JOptionPane.showMessageDialog(null, "Error en usuario y/o contraseña");
+					mensaje="Error en usuario y/o contraseña";
+					response.sendRedirect("index.jsp?mensaje="+mensaje);
 				}
 			}
 			else {
@@ -63,14 +65,29 @@ public class ServletLogin extends HttpServlet {
 					response.sendRedirect("menu.jsp");
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "Error en usuario y/o contraseña");
-					response.sendRedirect("index.jsp");
+					//JOptionPane.showMessageDialog(null, "Error en usuario y/o contraseña");
+					mensaje="Error en usuario y/o contraseña";
+					response.sendRedirect("index.jsp?mensaje="+mensaje);
 				}
 			}
 		}
 		else
 			if(request.getParameter("btncan")!=null){
-			JOptionPane.showMessageDialog(null, "Fin del programa");
+				//JOptionPane.showMessageDialog(null, "Fin del programa");
+				sesion.setAttribute("z", "1");
+				mensaje="Fin del programa";
+				response.sendRedirect("index.jsp?mensaje="+mensaje);
+		}
+		
+		//BLOQUE DE MENSAJE
+		if(request.getParameter("ok")!=null) {
+			String z=(String)sesion.getAttribute("z");
+			if(z.equals("1")) {
+				
+			}
+			else {
+				response.sendRedirect("index.jsp");
+			}
 		}
 	}
 

@@ -13,10 +13,23 @@
 Conexion con=new Conexion();
 con.conexionbd();
 %>
+<%String mensaje;%>
+<%mensaje=request.getParameter("mensaje");%>
+<form action="ServletLogin" method="get" class="mensj">
+<%if(mensaje!=null){ %>
+<table class="cont-menj">
+<tr>
+<th><%=mensaje%></th>
+</tr>
+<tr>
+<td><input type="submit" name="ok" value="OK" class="ok"></td>
+</tr>
+</table>
+<%}%>
+</form>
 <fieldset class="cont-form">
 <legend> Bienvenidos</legend>
 <legend class="l2">a la Tienda Generica</legend>
-
 <form action="ServletLogin" method="get">
 <label>Usuario
 <input type="text" name="usu">

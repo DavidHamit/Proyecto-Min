@@ -7,12 +7,12 @@ legend{
 	color: #504233;
 	font-weight: bold;
 	margin-top:20px;
+	margin-bottom:20px;
 }
 
 .cont-form{
     background-color: 0;
     width: 60%;
-    margin-top:20px;
     margin-left: auto;
     margin-right: auto;
     height: 450px;
@@ -54,6 +54,8 @@ label{
     height: 33px;
     margin-top:0;
     border-radius: 5px;
+    margin-left: 50px;
+    margin-top: 10px;
 }
 .btn{
 	display: flex;
@@ -74,7 +76,7 @@ label{
 	font-size: 20px;
 	border-radius: 5px;
 	border: 2px solid #091053;
-	margin-top:30px;
+	margin-top:60px;
 	margin-right: auto;
     margin-left: auto;
     height:100px;

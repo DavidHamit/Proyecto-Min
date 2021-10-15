@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 import com.google.gson.Gson;
 
@@ -71,7 +71,7 @@ public class ServletReporte extends HttpServlet {
 					cto=new ClienteDTO(ced);
 					cdto=cli.consultarp(cto);
 					nom=cdto.getNombre();
-					JOptionPane.showMessageDialog(null, nom);
+					//JOptionPane.showMessageDialog(null, nom);
 					nombres.add(cdto);
 				}
 				sesion.setAttribute("suma", sumven);
@@ -88,36 +88,37 @@ public class ServletReporte extends HttpServlet {
 		HttpSession titulo=request.getSession();
 		//ELECCION DE LISTADO
 		if(request.getParameter("cliente")!=null) {
-			JOptionPane.showMessageDialog(null, "if cliente");
+			//JOptionPane.showMessageDialog(null, "if cliente");
 			titulo.setAttribute("h2", "Listado de Clientes");
 			response.sendRedirect("tablac.jsp");
 		}
 		else
 			if(request.getParameter("usuario")!=null) {
-				JOptionPane.showMessageDialog(null, "if usuario");
+				//JOptionPane.showMessageDialog(null, "if usuario");
 				titulo.setAttribute("h2", "Listado de Usuarios");
 				response.sendRedirect("tablau.jsp");
 			}
 			else
 				if(request.getParameter("ventas")!=null) {
-					JOptionPane.showMessageDialog(null, "if ventas");
+					//JOptionPane.showMessageDialog(null, "if ventas");
 					titulo.setAttribute("h2", "Listado de Ventas");
 					response.sendRedirect("tablav.jsp");
 				}
 				else
 					if(request.getParameter("proveedores")!=null) {
-						JOptionPane.showMessageDialog(null, "if proveedores");
+						//JOptionPane.showMessageDialog(null, "if proveedores");
 						titulo.setAttribute("h2", "Consulta de Proveedores");
 						response.sendRedirect("tablap.jsp");
 					}
 					else
 						if(request.getParameter("producto")!=null) {
-							JOptionPane.showMessageDialog(null, "if producto");
+							//JOptionPane.showMessageDialog(null, "if producto");
 							titulo.setAttribute("h2", "Listado de Productos");
 							response.sendRedirect("tablaprod.jsp");
 						}
 		String opc;
 		opc=request.getParameter("dato");
+		String mensaje;
 		if(opc!=null) {
 			Gson gson;
 			PrintWriter pw=response.getWriter();
@@ -128,14 +129,15 @@ public class ServletReporte extends HttpServlet {
 				ClienteDAO cl=new ClienteDAO();
 				ArrayList<ClienteDTO> lista=new ArrayList<ClienteDTO>();
 				lista=cl.consulta();
-				JOptionPane.showMessageDialog(null, lista.size());
+				//JOptionPane.showMessageDialog(null, lista.size());
 				if(lista!=null) {
 					gson=new Gson();
 					pw.println(gson.toJson(lista));
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "No existe ningun cliente");
-					response.sendRedirect("tablaprod.jsp");
+					//JOptionPane.showMessageDialog(null, "No existe ningun cliente");
+					mensaje="No existe ningun cliente";
+					response.sendRedirect("tablaprod.jsp?mensaje="+mensaje);
 				}
 			}
 			
@@ -144,14 +146,15 @@ public class ServletReporte extends HttpServlet {
 				UsuarioDAO usdao=new UsuarioDAO();
 				ArrayList<UsuarioDTO> lista=new ArrayList<UsuarioDTO>();
 				lista=usdao.consultar();
-				JOptionPane.showMessageDialog(null, lista.size());
+				//JOptionPane.showMessageDialog(null, lista.size());
 				if(lista!=null) {
 					gson=new Gson();
 					pw.println(gson.toJson(lista));
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "No existe ningun usuario");
-					response.sendRedirect("tablaprod.jsp");
+					//JOptionPane.showMessageDialog(null, "No existe ningun usuario");
+					mensaje="No existe ningun usuario";
+					response.sendRedirect("tablaprod.jsp?mensaje="+mensaje);
 				}
 			}
 			
@@ -160,14 +163,15 @@ public class ServletReporte extends HttpServlet {
 				ProveedorDAO pdao=new ProveedorDAO();
 				ArrayList<ProveedorDTO> lista=new ArrayList<ProveedorDTO>();
 				lista=pdao.consulta();
-				JOptionPane.showMessageDialog(null, lista.size());
+				//JOptionPane.showMessageDialog(null, lista.size());
 				if(lista!=null) {
 					gson=new Gson();
 					pw.println(gson.toJson(lista));
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "No existe ningun proveedor");
-					response.sendRedirect("tablaprod.jsp");
+					//JOptionPane.showMessageDialog(null, "No existe ningun proveedor");
+					mensaje="No existe ningun proveedor";
+					response.sendRedirect("tablaprod.jsp?mensaje="+mensaje);
 				}
 			}
 			
@@ -201,8 +205,9 @@ public class ServletReporte extends HttpServlet {
 					pw.println(gson.toJson(lista));
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "No existe ninguna venta");
-					response.sendRedirect("tablaprod.jsp");
+					//JOptionPane.showMessageDialog(null, "No existe ninguna venta");
+					mensaje="No existe ninguna venta";
+					response.sendRedirect("tablaprod.jsp?mensaje="+mensaje);
 				}
 			}
 			
@@ -211,21 +216,22 @@ public class ServletReporte extends HttpServlet {
 				ArrayList<ProductoDTO> lista=new ArrayList<ProductoDTO>();
 				ProductoDAO prod=new ProductoDAO();
 				lista=prod.consultag();
-				JOptionPane.showMessageDialog(null, lista.size());
+				//JOptionPane.showMessageDialog(null, lista.size());
 				if(lista!=null) {
 					gson=new Gson();
 					pw.println(gson.toJson(lista));
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "No existe ningun producto");
-					response.sendRedirect("tablaprod.jsp");
+					//JOptionPane.showMessageDialog(null, "No existe ningun producto");
+					mensaje="No existe ningun producto";
+					response.sendRedirect("tablaprod.jsp?mensaje="+mensaje);
 				}
 			}
 		}
 		
 		//VOLVER
 		if(request.getParameter("back")!=null){
-			JOptionPane.showMessageDialog(null, "Back");
+			//JOptionPane.showMessageDialog(null, "Back");
 			response.sendRedirect("reportes.jsp");
 		}
 		else
@@ -233,7 +239,7 @@ public class ServletReporte extends HttpServlet {
 			if(request.getParameter("cedula")!=null) {
 				int doc,tel;
 				String nom,dir,email;
-				JOptionPane.showMessageDialog(null, "Consulta");
+				//JOptionPane.showMessageDialog(null, "Consulta");
 				int cedula;
 				ClienteDTO cldto;
 				ClienteDAO cli=new ClienteDAO();
@@ -242,8 +248,9 @@ public class ServletReporte extends HttpServlet {
 				cldto=new ClienteDTO(cedula);
 				dto=cli.consultarp(cldto);
 				if(dto==null) {
-					JOptionPane.showMessageDialog(null, "Cliente Inexistente");
-					response.sendRedirect("tablac.jsp");
+					//JOptionPane.showMessageDialog(null, "Cliente Inexistente");
+					mensaje="Cliente Inexistente";
+					response.sendRedirect("tablac.jsp?mensaje="+mensaje);
 				}
 				else {
 					doc=dto.getCedula();
@@ -283,8 +290,9 @@ public class ServletReporte extends HttpServlet {
 								"&&h2=Listado de Ventas");
 					}
 					else {
-						JOptionPane.showMessageDialog(null, "No existe esa venta");
-						response.sendRedirect("tablav.jsp");
+						//JOptionPane.showMessageDialog(null, "No existe esa venta");
+						mensaje="No existe esa venta";
+						response.sendRedirect("tablav.jsp?mensaje="+mensaje);
 					}
 				}
 				else
@@ -292,7 +300,7 @@ public class ServletReporte extends HttpServlet {
 					if(request.getParameter("cedusu")!=null) {
 						int doc;
 						String nom,email,usu,pass;
-						JOptionPane.showMessageDialog(null, "Consulta Usu");
+						//JOptionPane.showMessageDialog(null, "Consulta Usu");
 						int cedula;
 						UsuarioDTO usdto ;
 						UsuarioDAO us=new UsuarioDAO();
@@ -301,8 +309,9 @@ public class ServletReporte extends HttpServlet {
 						usdto=new UsuarioDTO(cedula);
 						dto=us.consultapar(usdto);
 						if(dto==null) {
-							JOptionPane.showMessageDialog(null, "Usuario Inexistente");
-							response.sendRedirect("tablau.jsp");
+							//JOptionPane.showMessageDialog(null, "Usuario Inexistente");
+							mensaje="Usuario Inexistente";
+							response.sendRedirect("tablau.jsp?mensaje="+mensaje);
 						}
 				
 						else {
@@ -311,8 +320,6 @@ public class ServletReporte extends HttpServlet {
 							email=dto.getCorreo();
 							usu=dto.getUsuario();
 							pass=dto.getPassword();
-							
-							
 							response.sendRedirect("tablau.jsp?cedula="+doc+"&&nombre="+nom+
 									"&&correo="+email+"&&usu="+usu+"&&pass="+pass+"&&h2=Listado de Usuarios");
 						}
@@ -322,7 +329,7 @@ public class ServletReporte extends HttpServlet {
 						if(request.getParameter("nitpr")!=null) {
 							int nit,tel;
 							String nom,dir,ciu;
-							JOptionPane.showMessageDialog(null, "Consultapp");
+							//JOptionPane.showMessageDialog(null, "Consultapp");
 							int nitpr;
 							ProveedorDTO pdto;
 							ProveedorDAO pdao=new ProveedorDAO();
@@ -331,8 +338,9 @@ public class ServletReporte extends HttpServlet {
 							pdto=new ProveedorDTO(nitpr);
 							pconp=pdao.consultar(pdto);
 							if(pconp==null) {
-								JOptionPane.showMessageDialog(null, "Proveedor NO existe en la base de datos");
-								response.sendRedirect("tablap.jsp");
+								//JOptionPane.showMessageDialog(null, "Proveedor NO existe en la base de datos");
+								mensaje="Proveedor NO existe en la base de datos";
+								response.sendRedirect("tablap.jsp?mensaje="+mensaje);
 							}
 							else {
 								nit=pconp.getNit();
@@ -350,7 +358,7 @@ public class ServletReporte extends HttpServlet {
 								int cod,nit,codigo;
 								String nomprod;
 								double iva,prec,venta;
-								JOptionPane.showMessageDialog(null, "Consulta Producto");
+								//JOptionPane.showMessageDialog(null, "Consulta Producto");
 								ProductoDAO prod=new ProductoDAO();
 								ProductoDTO pdto;
 								ProductoDTO dto;
@@ -368,10 +376,16 @@ public class ServletReporte extends HttpServlet {
 											"&&iva="+iva+"&&prec="+prec+"&&venta="+venta);
 								}
 								else {
-									JOptionPane.showMessageDialog(null, "No existe ese producto");
-									response.sendRedirect("tablaprod.jsp");
+									//JOptionPane.showMessageDialog(null, "No existe ese producto");
+									mensaje="No existe ese producto";
+									response.sendRedirect("tablaprod.jsp?mensaje="+mensaje);
 								}
 							}
+
+		//BLOQUE DE MENSAJE
+		if(request.getParameter("ok")!=null) {
+			response.sendRedirect("reportes.jsp");
+		}
 	}
 }
 

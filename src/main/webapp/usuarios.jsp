@@ -31,6 +31,20 @@
 </ul>
 </nav>
 </header>
+<%String mensaje;%>
+<%mensaje=request.getParameter("mensaje");%>
+<form action="ServletGestion" method="post" class="mensj">
+<%if(mensaje!=null){ %>
+<table class="cont-menj">
+<tr>
+<th><%=mensaje%></th>
+</tr>
+<tr>
+<td><input type="submit" name="ok" value="OK" class="ok"></td>
+</tr>
+</table>
+<%}%>
+</form>
 <fieldset class="cont-form">
 <legend> Menú Usuarios </legend>
 <form action="ServletGestion" method="post">

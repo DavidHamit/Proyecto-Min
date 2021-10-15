@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 import com.google.gson.Gson;
 
@@ -52,6 +52,7 @@ public class ServletGestion extends HttpServlet {
 		//long doc;
 		PrintWriter pw=response.getWriter();
 		boolean y;
+		String mensaje;
 		//BLOQUE DE INSERTAR
 		if(request.getParameter("btnins")!=null) {
 			doc=Integer.parseInt(request.getParameter("cedula"));
@@ -60,20 +61,23 @@ public class ServletGestion extends HttpServlet {
 			usu=request.getParameter("usu");
 			pass=request.getParameter("pass");
 			if(nom=="" || email=="" || usu=="" || pass=="") {
-				JOptionPane.showMessageDialog(null, "Faltan datos del usuario");
-				response.sendRedirect("usuarios.jsp");
+				//JOptionPane.showMessageDialog(null, "Faltan datos del usuario");
+				mensaje="Faltan datos del usuario";
+				response.sendRedirect("usuarios.jsp?mensaje="+mensaje);
 			}
 			else{
 				udto=new UsuarioDTO(doc,nom,email,usu,pass);
 				us=new UsuarioDAO();
 				y=us.insertar(udto);
 				if(y) {
-					JOptionPane.showMessageDialog(null, "Usuario Creado");
-					response.sendRedirect("usuarios.jsp");
+					//JOptionPane.showMessageDialog(null, "Usuario Creado");
+					mensaje="Usuario Creado";
+					response.sendRedirect("usuarios.jsp?mensaje="+mensaje);
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "El usuario ya existe");
-					response.sendRedirect("usuarios.jsp");
+					//JOptionPane.showMessageDialog(null, "El usuario ya existe");
+					mensaje="El usuario ya existe";
+					response.sendRedirect("usuarios.jsp?mensaje="+mensaje);
 				}
 			}
 		}
@@ -85,12 +89,14 @@ public class ServletGestion extends HttpServlet {
 			us=new UsuarioDAO();
 			y=us.eliminar(udto);
 			if(y) {
-				JOptionPane.showMessageDialog(null, "Datos del Usuario Borrados");
-				response.sendRedirect("usuarios.jsp");
+				//JOptionPane.showMessageDialog(null, "Datos del Usuario Borrados");
+				mensaje="Datos del Usuario Borrados";
+				response.sendRedirect("usuarios.jsp?mensaje="+mensaje);
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Usuario inexistente");
-				response.sendRedirect("usuarios.jsp");
+				//JOptionPane.showMessageDialog(null, "Usuario inexistente");
+				mensaje="Usuario inexistente";
+				response.sendRedirect("usuarios.jsp?mensaje="+mensaje);
 			}
 		}
 		
@@ -102,8 +108,9 @@ public class ServletGestion extends HttpServlet {
 			us=new UsuarioDAO();
 			cons=us.consultapar(udto);
 			if(cons==null) {
-				JOptionPane.showMessageDialog(null, "Usuario inexistente");
-				response.sendRedirect("usuarios.jsp");
+				//JOptionPane.showMessageDialog(null, "Usuario inexistente");
+				mensaje="Usuario inexistente";
+				response.sendRedirect("usuarios.jsp?mensaje="+mensaje);
 			}
 			else {
 				cedu=cons.getCedula();
@@ -127,20 +134,23 @@ public class ServletGestion extends HttpServlet {
 			usu=request.getParameter("usu");
 			pass=request.getParameter("pass");
 			if(nom=="" || email=="" || usu=="" || pass=="") {
-				JOptionPane.showMessageDialog(null, "Faltan datos del usuario");
-				response.sendRedirect("usuarios.jsp");
+				//JOptionPane.showMessageDialog(null, "Faltan datos del usuario");
+				mensaje="Faltan datos del usuario";
+				response.sendRedirect("usuarios.jsp?mensaje="+mensaje);
 			}
 			else{
 				udto=new UsuarioDTO(doc, nom, email, usu, pass);
 				us=new UsuarioDAO();
 				x=us.actualizar(udto);
 				if(x!=0) {
-					JOptionPane.showMessageDialog(null, "Datos del Usuario Actualizados");
-					response.sendRedirect("usuarios.jsp");
+					//JOptionPane.showMessageDialog(null, "Datos del Usuario Actualizados");
+					mensaje="Datos del Usuario Actualizados";
+					response.sendRedirect("usuarios.jsp?mensaje="+mensaje);
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "Usuario inexistente");
-					response.sendRedirect("usuarios.jsp");
+					//JOptionPane.showMessageDialog(null, "Usuario inexistente");
+					mensaje="Usuario inexistente";
+					response.sendRedirect("usuarios.jsp?mensaje="+mensaje);
 				}
 			}
 		}
@@ -169,17 +179,16 @@ public class ServletGestion extends HttpServlet {
 		
 		//Consulta general
 		String dato=request.getParameter("dat");
-		JOptionPane.showMessageDialog(null, dato);
+		//JOptionPane.showMessageDialog(null, dato);
 		if(dato!=null) {
 			if(dato.equals("consultar")) {
-				JOptionPane.showMessageDialog(null, "en el if");
-			ArrayList<UsuarioDTO>lista=new ArrayList<UsuarioDTO>();	
-			us=new UsuarioDAO();
-			lista=us.consultar();
-			JOptionPane.showMessageDialog(null, lista.size());
-			Gson gson=new Gson();
-				
-			pw.println(gson.toJson(lista));
+				//JOptionPane.showMessageDialog(null, "en el if");
+				ArrayList<UsuarioDTO>lista=new ArrayList<UsuarioDTO>();	
+				us=new UsuarioDAO();
+				lista=us.consultar();
+				//JOptionPane.showMessageDialog(null, lista.size());
+				Gson gson=new Gson();
+				pw.println(gson.toJson(lista));
 			}
 		}
 		
@@ -191,6 +200,11 @@ public class ServletGestion extends HttpServlet {
 		list=us.consultardocumento();
 		pw.println(gson.toJson(list));
 		}*/
+		
+		//BLOQUE MENSAJE
+		if(request.getParameter("ok")!=null) {
+			response.sendRedirect("usuarios.jsp");
+		}
 	}
 
 }

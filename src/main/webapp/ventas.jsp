@@ -26,6 +26,30 @@
 </ul>
 </nav>
 </header>
+<%String mensaje,alert;
+HttpSession sesion=request.getSession();%>
+<%mensaje=request.getParameter("mensaje");
+alert=(String)sesion.getAttribute("alert");
+alert="";%>
+<%if(alert!=null){ %>
+<table class="cont-alert">
+<tr>
+<th class="alert"><%=alert%></th>
+</tr>
+</table>
+<%} %>
+<form action="ServletVentas" method="post" class="mensj">
+<%if(mensaje!=null){ %>
+<table class="cont-menj">
+<tr>
+<th><%=mensaje%></th>
+</tr>
+<tr>
+<td><input type="submit" name="ok" value="OK" class="ok"></td>
+</tr>
+</table>
+<%}%>
+</form>
 <fieldset>
 <legend>Menú Ventas</legend>
 <form action="ServletVentas" method="post">

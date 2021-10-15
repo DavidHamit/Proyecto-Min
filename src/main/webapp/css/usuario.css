@@ -6,11 +6,11 @@ legend{
 	font-size: 30px;
 	color: #504233;
 	font-weight: bold;
-	margin-top:20px;
+	margin-top:0px;
+	margin-bottom: 25px;
 }
 
 .cont-form{
-	margin-top:20px;
     background-color: 0;
     width: 60%;
     margin-left: auto;
@@ -33,7 +33,6 @@ input{
 form{
     background-color: #B3A190;
     width: 100%;
-    margin-top: 25px;
     padding: 10px;
     /*border: 2px solid #ffff;*/
 }
@@ -60,6 +59,7 @@ label{
     height: 33px;
     margin-top:0;
     border-radius: 5px;
+    margin-left: 50px;
 }
 
 .con{

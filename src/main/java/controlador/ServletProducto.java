@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 import com.google.gson.Gson;
 
@@ -43,7 +43,7 @@ public class ServletProducto extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//CONSULTAR PRODUCTO
 		if(request.getParameter("cons")!=null) {
-			JOptionPane.showMessageDialog(null, "Dentro");			
+			//JOptionPane.showMessageDialog(null, "Dentro");			
 			int codigo;
 			ProductoDAO prod=new ProductoDAO();
 			ProductoDTO prdto;
@@ -75,9 +75,9 @@ public class ServletProducto extends HttpServlet {
 			ArrayList<ProductoDTO> lista=new ArrayList<ProductoDTO>();
 			ProductoDAO prod=new ProductoDAO();
 			if(dato.equals("prod")) {
-			JOptionPane.showMessageDialog(null, "if producto");
+			//JOptionPane.showMessageDialog(null, "if producto");
 			lista=prod.consultag();
-			JOptionPane.showMessageDialog(null, lista.size());
+			//JOptionPane.showMessageDialog(null, lista.size());
 			gson=new Gson();
 			pw.println(gson.toJson(lista));
 			}
@@ -90,12 +90,13 @@ public class ServletProducto extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Part archivo=null;
 		archivo=request.getPart("exam");
-		JOptionPane.showMessageDialog(null, archivo);
+		//JOptionPane.showMessageDialog(null, archivo);
 		//String url="C:\\\\Users\\\\david\\\\git\\\\Proyecto-Min\\\\src\\\\main\\\\webapp\\\\documentos\\\\";
 		String url="C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/";
 
 		//CARGAR PRODUCTO
 		if(request.getParameter("btncarg")!=null) {
+			String mensaje;
 			if(request.getPart("exam")!=null) {
 				try {
 					InputStream file=archivo.getInputStream();
@@ -109,28 +110,37 @@ public class ServletProducto extends HttpServlet {
 					file.close();
 					write.close();
 					boolean x;
-					JOptionPane.showMessageDialog(null, "Se cargo archivo");
+					//JOptionPane.showMessageDialog(null, "Se cargo archivo");
 					ProductoDAO prod=new ProductoDAO();
 					x=prod.cargarproduc(url+"Lineas.csv");
 					if(x) {
-						JOptionPane.showMessageDialog(null, "Archivo cargado exitosamente");
-						response.sendRedirect("productos.jsp");
+						//JOptionPane.showMessageDialog(null, "Archivo cargado exitosamente");
+						mensaje="Archivo cargado exitosamente";
+						response.sendRedirect("productos.jsp?mensaje="+mensaje);
 					}
 					else {
-						JOptionPane.showMessageDialog(null, "Error: datos leidos invalidos");
-						response.sendRedirect("productos.jsp");
+						//JOptionPane.showMessageDialog(null, "Error: datos leidos invalidos");
+						mensaje="Error: datos leidos invalidos";
+						response.sendRedirect("productos.jsp?mensaje="+mensaje);
 					}
 				}
 				catch(Exception ex) {
-					JOptionPane.showMessageDialog(null, "Error: formato de archivo invalido");
-					response.sendRedirect("productos.jsp");
+					//JOptionPane.showMessageDialog(null, "Error: formato de archivo invalido");
+					mensaje="Error: Formato de archivo invalido";
+					response.sendRedirect("productos.jsp?mensaje="+mensaje);
 					//JOptionPane.showMessageDialog(null, "Error: "+ex);
 				}
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "ERROR: no se selecciono archivo para cargar");
-				response.sendRedirect("productos.jsp");
+				//JOptionPane.showMessageDialog(null, "ERROR: no se selecciono archivo para cargar");
+				mensaje="ERROR: no se selecciono archivo para cargar";
+				response.sendRedirect("productos.jsp?mensaje="+mensaje);
 			}
+		}
+		
+		//BLOQUE DE MENSAJE
+		if(request.getParameter("ok")!=null) {
+			response.sendRedirect("productos.jsp");
 		}
 	}
 

@@ -50,14 +50,15 @@ label{
     color:#E0DFDF;
     width: 150px;
     height: 33px;
-    margin-top:0;
+    margin-top: 10px;
     border-radius: 5px;
+    margin-left: 50px;
 }
 .btn{
 	display: flex;
 }
 [type="button"]{
-	margin-top: 5px;
+	margin-top: 10px;
 	font-weight: bold;
     border: 1px solid #E0DFDF;
     color:#E0DFDF;
@@ -88,7 +89,7 @@ label{
 	font-size: 20px;
 	border-radius: 5px;
 	border: 2px solid #091053;
-	margin-top:30px;
+	margin-top:70px;
 	margin-right: auto;
     margin-left: auto;
     height:100px;
@@ -114,4 +115,27 @@ td{
 	border-radius: 5px;
 	background-color: #B3A190;
 	width: 55%;
+}
+.mensaje{
+	color: rgb(107, 45, 33);
+	font-weight: bold;
+	background-color: rgb(165, 91, 48);
+	margin-top: 5px; 
+}
+.cont-menj{
+	margin-top: 5px;
+	background-color: rgb(165, 91, 48);
+	color: rgb(107, 45, 33);
+	width: 190px;
+	margin-left: 1090px;
+	margin-top: 100px;
+	display: flex;
+	position: fixed; 
+}
+.ok{
+	margin-top: 10px;
+	background-color: rgb(165, 91, 48);
+}
+.mensj{
+	background-color: transparent;
 }
