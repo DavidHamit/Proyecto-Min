@@ -11,11 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 //import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;
 
 import com.google.gson.Gson;
 
 import modelo.ClienteDAO;
 import modelo.ClienteDTO;
+import modelo.DetalleVentaDAO;
+import modelo.DetalleVentaDTO;
 import modelo.ProductoDAO;
 import modelo.ProductoDTO;
 import modelo.ProveedorDAO;
@@ -230,8 +233,7 @@ public class ServletReporte extends HttpServlet {
 		}
 		
 		//VOLVER
-		if(request.getParameter("back")!=null){
-			//JOptionPane.showMessageDialog(null, "Back");
+		if(request.getParameter("back")!=null || request.getParameter("back1")!=null){
 			response.sendRedirect("reportes.jsp");
 		}
 		else
@@ -295,6 +297,43 @@ public class ServletReporte extends HttpServlet {
 						response.sendRedirect("tablav.jsp?mensaje="+mensaje);
 					}
 				}
+				if(request.getParameter("codigoven")!=null){
+					HttpSession sesion=request.getSession();
+					VentasDTO vto;
+					VentasDTO vdto;
+					VentasDTO dto;
+					VentasDAO ven=new VentasDAO();
+					ClienteDAO cli=new ClienteDAO();
+					ClienteDTO cto;
+					ClienteDTO cdto;
+					int cod,ced;
+					String nom;
+					double sumven, vlr, iva, vlrventa;
+					cod=Integer.parseInt(request.getParameter("codigoven"));
+					vto=new VentasDTO(cod);
+					vdto=ven.consultaced(vto);
+					dto = ven.detalleventas(vto);
+					if(vdto!=null) {
+						vlr=dto.getTotal();
+						ced=vdto.getCedcli();
+						cto=new ClienteDTO(ced);
+						cdto = cli.consultarp(cto);
+						iva = dto.getIva();
+						vlrventa = dto.getVlrventa();
+						nom=cdto.getNombre();
+						sumven=vlr;
+						sesion.setAttribute("suma", sumven);
+						response.sendRedirect("DetalleVentas.jsp?vlrventa="+vlrventa+"&&ced="+ced+"&&nom="+nom+"&&sum="+sumven+"&&iva="+iva+
+								"&&h23=Detalle de Ventas");
+					}
+					else if(vdto == null){
+						//JOptionPane.showMessageDialog(null, "No existe esa venta");
+						mensaje="No existe esa venta";
+						response.sendRedirect("DetalleVentas.jsp?mensaje="+mensaje);
+					}
+				}
+
+		
 				else
 					//CONSULTA PARTICULAR DE USUARIO
 					if(request.getParameter("cedusu")!=null) {

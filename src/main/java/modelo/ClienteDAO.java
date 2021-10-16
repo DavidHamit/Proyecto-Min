@@ -83,7 +83,7 @@ public class ClienteDAO {
 		return x;
 	}
 	
-	public ClienteDTO consultarp(ClienteDTO cl) {
+public ClienteDTO consultarp(ClienteDTO cl) {
 		
 		try {
 			ps=cnn.prepareStatement("SELECT * FROM clientes WHERE cedula=?");
@@ -98,6 +98,7 @@ public class ClienteDAO {
 		}
 		return cd;
 	}
+
 	
 	public ArrayList<ClienteDTO> consulta(){
 		ArrayList<ClienteDTO> lista=new ArrayList<>();
@@ -114,4 +115,5 @@ public class ClienteDAO {
 		}
 		return lista;
 	}
+
 }

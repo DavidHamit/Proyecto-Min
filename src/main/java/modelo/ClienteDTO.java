@@ -1,5 +1,7 @@
 package modelo;
 
+import javax.swing.JOptionPane;
+
 public class ClienteDTO {
 	private int cedula;
 	private String nombre;
@@ -19,6 +21,11 @@ public class ClienteDTO {
 		this.cedula = cedula;
 	}
 
+
+
+	public ClienteDTO(String nombre) {
+		this.nombre = nombre;	
+	}
 
 
 	public int getCedula() {

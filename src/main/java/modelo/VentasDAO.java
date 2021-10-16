@@ -35,8 +35,23 @@ public class VentasDAO {
 			ps=cnn.prepareStatement("SELECT MAX(codigo_venta),valor_venta,valor_IVA,valor_total_venta AS id FROM ventas");
 			rs=ps.executeQuery();
 			if(rs.next()) {
-				JOptionPane.showMessageDialog(null, "Dentro del if");
+				//JOptionPane.showMessageDialog(null, "Dentro del if");
 				vdto=new VentasDTO(rs.getInt(1), rs.getDouble(2), rs.getDouble(3), rs.getDouble(4));
+			}
+		}
+		catch(SQLException ex) {
+			JOptionPane.showMessageDialog(null, "Error en consultar: "+ex);
+		}
+		return vdto;
+	}
+	public VentasDTO detalleventas(VentasDTO ven) {
+		try {
+			ps=cnn.prepareStatement("SELECT cedula_cliente, valor_total_venta, valor_venta, valor_IVA FROM ventas WHERE codigo_venta=?");
+			ps.setInt(1, ven.getCodigo());
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				//JOptionPane.showMessageDialog(null, "Dentro del if");
+				vdto=new VentasDTO(rs.getInt(1), rs.getDouble(3), rs.getDouble(4), rs.getDouble(2));
 			}
 		}
 		catch(SQLException ex) {

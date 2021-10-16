@@ -25,9 +25,9 @@ public class VentasDTO {
 		this.total = total;
 	}
 
-	public VentasDTO(int codigo, double vlrventa, double iva, double total) {
+	public VentasDTO(int cedcli, double iva, double vlrventa, double total) {
 		super();
-		this.codigo = codigo;
+		this.cedcli = cedcli;
 		this.vlrventa = vlrventa;
 		this.iva = iva;
 		this.total = total;
@@ -41,6 +41,10 @@ public class VentasDTO {
 
 	public VentasDTO(int codigo) {
 		this.codigo = codigo;
+	}
+	
+	public VentasDTO(double vlrventa) {
+		this.vlrventa = vlrventa;
 	}
 
 	public int getCodigo() {

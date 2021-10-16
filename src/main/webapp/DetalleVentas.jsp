@@ -6,7 +6,11 @@
 <meta charset="ISO-8859-1">
 <title>Proyecto</title>
 <link rel="stylesheet" href="css/header.css">
-<link rel="stylesheet" href="css/ventas.css">
+<link rel="stylesheet" href="css/table.css">
+<link rel="stylesheet" href="css/DetlleVentas.css">
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/reporte.js"></script>
+
 </head>
 <body>
 <header class="cont-header">
@@ -26,38 +30,54 @@
 </ul>
 </nav>
 </header>
+<%String mensaje;%>
+<%mensaje=request.getParameter("mensaje");%>
+<form action="ServletReporte" method="post" class="mensj">
+<%if(mensaje!=null){ %>
+<table class="cont-menj">
+<tr>
+<th><%=mensaje%></th>
+</tr>
+<tr>
+<td><input type="submit" name="ok" value="OK" class="ok"></td>
+</tr>
+</table>
+<%}%>
+</form>
+<h2>Detalle Ventas</h2>
 <fieldset class="cont-form">
 <form action="ServletReporte" method="post">
-<label>Código de Venta
-<input class="codven" type="number" name="codven">
+<label class = "codventas">Código de Venta
+<input class="codigoven" type="number" name="codigoven">
 </label>
-<input type="submit" name="cons" value="Consultar">
-<input class="vent" id="vent" type="button" name="consg" value="Consulta General">
-<table class="tablav" id="tablav">
-<%! String cedula="",nom="",total="",vtotal=""; %>
+<input class = "consultas" type="submit" name="cons" value="Consultar">
+<input class="vent1" id="vent1" type="button" name="consg" value="Consulta General">
+<table class="tabladv" id="tabladv">
+<%! String cedula="",nom="",total="", vIVA = "", vtotal=""; %>
 <%cedula=request.getParameter("ced");
 	nom=request.getParameter("nom");
-	total=request.getParameter("vlr");
+	vIVA = request.getParameter("iva");
+	total=request.getParameter("vlrventa");
 	vtotal=request.getParameter("sum");
 	HttpSession sesion=request.getSession();
 	%>
 <tr>
 <th>Cedula</th>
 <th>Nombre</th>
-<th>Valor Total de Venta</th>
+<th>Valor de IVA</th>
+<th>Total Venta</th>
+<th>Valor Total Venta</th>
 </tr>
 <tr>
 <td><%=cedula%></td>
 <td><%=nom%></td>
+<td><%=vIVA%></td>
 <td><%=total%></td>
+<td><%=vtotal%></td>
+
 </tr>
 </table>
-<table id="tablan" class="tablan">
-</table>
-<label>Total Ventas $
-<input value="${suma}" class="sum">
-</label>
-<input class="back" type="submit" name="back" value="Volver">
+<a href = "tablav.jsp"><input class="back1" type="button" name="back1" value="Volver"></a>
 </form>
 </fieldset>
 

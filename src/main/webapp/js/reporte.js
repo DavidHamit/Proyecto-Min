@@ -82,6 +82,7 @@ $(document).ready(function(){
 		});
 	}
 	
+	
 	function nombventa(){
 		alert("nombres");
 		$.ajax({

@@ -30,6 +30,10 @@ public class DetalleVentaDTO {
 		this.vriva = vriva;
 	}
 
+	public DetalleVentaDTO(long cod) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public long getCodetven() {
 		return codetven;
 	}
@@ -85,6 +89,7 @@ public class DetalleVentaDTO {
 	public void setVriva(double vriva) {
 		this.vriva = vriva;
 	}
+
 	
 	
 	

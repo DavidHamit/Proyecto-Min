@@ -23,6 +23,7 @@ td{
 	background-color: #B3A190;
 	width: 50%;
 }
+
 [type="submit"]{
 	display: inline;
 	border-radius: 5px;
@@ -39,9 +40,25 @@ td{
 	height: 25px;
 	margin-bottom: 10px;
 }
+.more_details{
+	border-radius: 5px;
+	display: flex;
+	margin-left: 270px;
+	margin-top: 10px;
+	width: 100px;
+	height: 25px;
+	margin-bottom: 10px;
+}
+
+.consultas{
+	display: inline;
+	margin-bottom: 10px;
+	margin-left: 40px;
+	margin-top: 20px;
+}
 label{
 	display: inline;
-	margin-left: 140px;
+	margin-left: 80px;
     font-size: 20px;
 	color: #504233;
 	font-weight: bold;
@@ -54,15 +71,21 @@ h2{
 	margin-top:20px;
 	margin-bottom: 25px;
 }
-.back{
+.vent1{
+	margin-left: 290px;
+	
+}
+.back1{
 	margin-top: 15px;
-	margin-left: 280px;
+	margin-left: 42%;
+	width: 80px;
 }
 .cedula{
 	background-color: transparent;
     border: 0;
     border-bottom: 2px solid #E0DFDF;
 }
+
 .cedven{
 	background-color: transparent;
     border: 0;

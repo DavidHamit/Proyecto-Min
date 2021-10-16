@@ -79,6 +79,7 @@
 <input value="${suma}" class="sum">
 </label>
 <input class="back" type="submit" name="back" value="Volver">
+<a href = "DetalleVentas.jsp"><input class="more_details" type="button" name="back" value="Más Detalles"></a>
 </form>
 </fieldset>
 </body>

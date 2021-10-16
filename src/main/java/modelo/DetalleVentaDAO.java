@@ -34,6 +34,8 @@ public class DetalleVentaDAO {
 		return x;
 		
 	}
+
+	
 	
 	
 
