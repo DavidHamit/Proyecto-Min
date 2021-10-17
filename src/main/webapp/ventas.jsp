@@ -91,8 +91,26 @@ alert="";%>
 <tr>
 <td><input type="submit" name="enviar" value="Enviar venta" class="env"></td>
 </tr>
+<%if(request.getParameter("cons1")!=null || request.getParameter("cant1")!=null){%>
+<tr class="sin">
+<td>Total sin IVA</td>
+<td><input value="${tsv}"></td>
+</tr>
+<tr class="iva">
+<td>Total IVA</td>
+<td><input value="${tiva}"></td>
+</tr>
+<tr class="total">
+<td>TOTAL</td>
+<td><input value="${total}"></td>
+</tr>
+<%} %>
+<tr>
+<td><input type="submit" name="enviar" value="Enviar venta" class="env" id="env"></td>
+</tr>
 </tbody>
 </table>
+<input type="submit" name="calcular" value="Calcular venta" class="cal" id="cal">
 <input type="hidden" name="cedusu" value="${usu.getCedula()}">
 </form>
 </fieldset>

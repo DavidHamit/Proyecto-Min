@@ -119,6 +119,11 @@ public class ServletReporte extends HttpServlet {
 							titulo.setAttribute("h2", "Listado de Productos");
 							response.sendRedirect("tablaprod.jsp");
 						}
+						else
+							if(request.getParameter("detven")!=null) {
+								titulo.setAttribute("h2", "Detalles de Ventas");
+								response.sendRedirect("DetalleVentas.jsp");
+							}
 		String opc;
 		opc=request.getParameter("dato");
 		String mensaje;
@@ -228,6 +233,39 @@ public class ServletReporte extends HttpServlet {
 					//JOptionPane.showMessageDialog(null, "No existe ningun producto");
 					mensaje="No existe ningun producto";
 					response.sendRedirect("tablaprod.jsp?mensaje="+mensaje);
+				}
+			}
+			
+			//CONSULTA GENERAL DETALLE VENTAS
+			if(opc.equals("det")) {
+				ArrayList<DetalleVentaDTO> lista=new ArrayList<DetalleVentaDTO>();
+				ArrayList<String> nombres=new ArrayList<String>();
+				DetalleVentaDAO ven=new DetalleVentaDAO();
+				DetalleVentaDTO vto;
+				ProductoDAO prd=new ProductoDAO();
+				ProductoDTO pto;
+				ProductoDTO pdto;
+				int cod;
+				String prod;
+				String nom;
+				lista=ven.detconsulta();
+				for(int i=0; i<lista.size(); i++) {
+					vto=lista.get(i);
+					prod=String.valueOf(vto.getCoprod());
+					cod=Integer.parseInt(prod);
+					pto=new ProductoDTO(cod);
+					pdto=prd.consulta(pto);
+					nom=pdto.getNomprod();
+					nombres.add(nom);
+				}
+				if(lista!=null) {
+					gson=new Gson();
+					pw.println(gson.toJson(lista));
+				}
+				else {
+					//JOptionPane.showMessageDialog(null, "No existe ninguna venta");
+					mensaje="No existe ninguna venta";
+					response.sendRedirect("DetalleVentas.jsp?mensaje="+mensaje);
 				}
 			}
 		}
@@ -418,8 +456,35 @@ public class ServletReporte extends HttpServlet {
 									//JOptionPane.showMessageDialog(null, "No existe ese producto");
 									mensaje="No existe ese producto";
 									response.sendRedirect("tablaprod.jsp?mensaje="+mensaje);
-								}
+								}								
 							}
+							else
+								//CONSULTA PARTICULAR DETALLE DE VENTA
+								if(request.getParameter("codigoven")!=null) {
+									ArrayList<DetalleVentaDTO> lista=new ArrayList<DetalleVentaDTO>();
+									int codigo, cant;
+									long codprod,codv;
+									double iva,tsv,total;
+									codigo=Integer.parseInt(request.getParameter("codigoven"));
+									DetalleVentaDAO ven=new DetalleVentaDAO();
+									DetalleVentaDTO vdto=new DetalleVentaDTO(codigo);
+									DetalleVentaDTO dto;
+									dto=ven.detalleventa(vdto);
+									if(dto!=null) {
+										codv=dto.getCodven();
+										codprod=dto.getCoprod();
+										cant=dto.getCan();
+										tsv=dto.getVrven();
+										iva=dto.getVriva();
+										total=dto.getVrtot();
+										response.sendRedirect("DetalleVentas.jsp?codv="+codv+"&&cod="+codprod+"&&cant="+cant+"&&tsv="+tsv+"&&iva="+iva+
+												"&&total="+total);
+									}
+									else {
+										mensaje="No existe esa venta";
+										response.sendRedirect("DetalleVentas.jsp?mensaje="+mensaje);
+									}
+								}
 
 		//BLOQUE DE MENSAJE
 		if(request.getParameter("ok")!=null) {

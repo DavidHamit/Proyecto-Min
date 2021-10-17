@@ -116,3 +116,21 @@ alert{
 	background-color: rgb(165, 91, 48);
 	margin-top: 5px;
 }
+.sin{
+	margin-left: 500px;
+}
+.total{
+	margin-left: 500px;
+}
+.iva{
+	margin-left: 500px;
+}
+
+.cal{
+	display: flex;
+	position: absolute;
+	margin-left: 50px;
+	margin-top: -48px;
+	height: 35px;
+	margin-right: 50px;
+}

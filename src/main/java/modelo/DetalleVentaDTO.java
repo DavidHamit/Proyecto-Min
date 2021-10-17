@@ -30,8 +30,17 @@ public class DetalleVentaDTO {
 		this.vriva = vriva;
 	}
 
-	public DetalleVentaDTO(long cod) {
-		// TODO Auto-generated constructor stub
+	public DetalleVentaDTO(long codven) {
+		this.codven = codven;
+	}
+
+	public DetalleVentaDTO(long coprod, int can, double vrven, double vrtot, double vriva) {
+		super();
+		this.coprod = coprod;
+		this.can = can;
+		this.vrven = vrven;
+		this.vrtot = vrtot;
+		this.vriva = vriva;
 	}
 
 	public long getCodetven() {

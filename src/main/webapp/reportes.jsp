@@ -37,6 +37,7 @@
 <input type="submit" name="ventas" value="Ventas por Cliente" class="ven">
 <input type="submit" name="proveedores" value="Listado de Proveedores" class="prov">
 <input type="submit" name="producto" value="Listado de Productos" class="prod">
+<input type="submit" name="detven" value="Detalles de Ventas" class="dven">
 </form>
 </fieldset>
 </body>

@@ -160,6 +160,33 @@ $(document).ready(function(){
 		});
 	}
 	
+	function detalleventa(){
+		//alert("detventa");
+		$.ajax({
+			type:"post",
+			url:"ServletReporte",
+			dataType:'json',
+			data:{dato:"det"},
+			success: function( result){
+				console.log(result);
+				let datos=document.querySelector("#tabladv");
+				datos.innerHTML='';
+				datos.innerHTML+=`<tr><th>Codigo de Venta</th>
+								<th>Codigo del Producto</th>
+								<th>Total Venta</th>
+								<th>Valor IVA</th>
+								<th>Valor Total Ventas</th></tr>`;
+				for(let i of result){
+					datos.innerHTML+=`<tr><td>${i.codven}</td>
+									<td>${i.coprod}</td>
+									<td>${i.vrven}</td>
+									<td>${i.vriva}</td>
+									<td>${i.vrtot}</td></tr>`;
+				}
+			}
+		});
+	}
+	
 	$('.usu').on('click', function(){
 		listausuario();
 	});
@@ -179,5 +206,9 @@ $(document).ready(function(){
 	
 	$('.prod').on('click', function(){
 		listaproducto();
+	});
+	
+	$('.dven').on('click', function(){
+		detalleventa();
 	});
 });

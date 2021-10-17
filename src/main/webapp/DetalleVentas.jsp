@@ -50,36 +50,58 @@
 <label class = "codventas">Código de Venta
 <input class="codigoven" type="number" name="codigoven">
 </label>
-<input class = "consultas" type="submit" name="cons" value="Consultar">
-<input class="vent1" id="vent1" type="button" name="consg" value="Consulta General">
+<input class = "consultas" type="submit" name="cons" value="Consultar" id="consultas">
+<input class="dven" id="dven" type="button" name="consg" value="Consulta General">
 <table class="tabladv" id="tabladv">
-<%! String cedula="",nom="",total="", vIVA = "", vtotal=""; %>
-<%cedula=request.getParameter("ced");
-	nom=request.getParameter("nom");
+<%! String codven="",codprod="",nom="",cant="",total="", vIVA = "", vtotal=""; %>
+<%
+	codven=request.getParameter("codv");
+	codprod=request.getParameter("cod");
+	//nom=request.getParameter("nom");
+	//nom="nombre";
+	cant=request.getParameter("cant");
 	vIVA = request.getParameter("iva");
-	total=request.getParameter("vlrventa");
-	vtotal=request.getParameter("sum");
+	total=request.getParameter("tsv");
+	vtotal=request.getParameter("total");
 	HttpSession sesion=request.getSession();
+	
+	
+	/*codven1=request.getParameter("codv1");
+	codprod1=request.getParameter("cod1");
+	cant1=request.getParameter("cant1");
+	vIVA1= request.getParameter("iva1");
+	total1=request.getParameter("tsv1");
+	vtotal1=request.getParameter("total1");
+	
+	codven2=request.getParameter("codv2");
+	codprod2=request.getParameter("cod2");
+	cant2=request.getParameter("cant2");
+	vIVA2= request.getParameter("iva2");
+	total2=request.getParameter("tsv2");
+	vtotal2=request.getParameter("total2");*/
 	%>
 <tr>
-<th>Cedula</th>
-<th>Nombre</th>
-<th>Valor de IVA</th>
+<!-- <th>Codigo de Venta</th> -->
+<th>Codigo del Producto</th>
+<!-- <th>Nombre</th> -->
+<th>Cantidad</th>
 <th>Total Venta</th>
+<th>Valor de IVA</th>
 <th>Valor Total Venta</th>
 </tr>
 <tr>
-<td><%=cedula%></td>
-<td><%=nom%></td>
+<!-- <td><%=codven%></td> -->
+<td><%=cant%></td>
+<td><%=codprod%></td>
+<!-- <td><%=nom%></td> -->
 <td><%=vIVA%></td>
 <td><%=total%></td>
 <td><%=vtotal%></td>
-
 </tr>
+<%//}%>
 </table>
-<a href = "tablav.jsp"><input class="back1" type="button" name="back1" value="Volver"></a>
+<input class="back" type="submit" name="back" value="Volver">
 </form>
 </fieldset>
-
 </body>
 </html>
